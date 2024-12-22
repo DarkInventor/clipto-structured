@@ -1,0 +1,47 @@
+{
+  "name": "remotion-ads-generator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.709.0",
+    "@headlessui/react": "^2.2.0",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/react-navigation-menu": "^1.2.3",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-switch": "^1.1.2",
+    "@radix-ui/react-toast": "^1.2.3",
+    "@remotion/bundler": "4.0.237",
+    "@remotion/cli": "4.0.237",
+    "@remotion/lambda": "4.0.237",
+    "@remotion/player": "4.0.237",
+    "@remotion/renderer": "4.0.237",
+    "@remotion/studio": "4.0.237",
+    "class-variance-authority": "^0.7.1",
+    "firebase": "^11.1.0",
+    "framer-motion": "^10.18.0",
+    "fs": "0.0.1-security",
+    "lucide-react": "^0.468.0",
+    "next": "14.2.13",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.3.5",
+    "remotion": "4.0.237",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.0.0"
+  }
+}

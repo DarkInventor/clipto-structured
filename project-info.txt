@@ -1,0 +1,120 @@
+Remotion Ads Generator
+
+Project Overview:
+Remotion Ads Generator is a web application that allows users to create dynamic video advertisements using customizable templates. Built with React and Remotion, it simplifies the creation of professional video ads.
+
+Features:
+- Multiple ad templates: Angled Presentation, Quick Teaser, Laptop Zoom, Dynamic Showcase
+- Customizable text, images, and video inputs
+- Adjustable video duration and effects
+- Real-time preview
+- AWS Lambda integration for serverless rendering
+- Downloadable videos
+
+Prerequisites:
+- Node.js (v14 or later)
+- npm (v6 or later)
+- AWS account with Lambda and S3 access
+
+Setup Instructions:
+1. Clone the repository:
+   git clone https://github.com/your-username/remotion-ads-generator.git
+   cd remotion-ads-generator
+
+2. Install dependencies:
+   npm install
+
+3. Set up environment variables in a .env file.
+
+4. Start the development server:
+   npm run dev
+
+5. Open your browser and navigate to http://localhost:3000.
+
+Environment Variables:
+- AWS_REGION
+- LAMBDA_FUNCTION_NAME
+- REMOTION_REMOTION_AWS_ACCESS_KEY_ID
+- REMOTION_REMOTION_AWS_SECRET_ACCESS_KEY
+- REMOTION_SERVE_URL: URL of your S3 bucket where rendered videos will be served from
+- API_KEY
+- BUCKET_NAME
+
+Obtaining AWS Keys and Setting Up AWS Services:
+
+1. Create an AWS Account:
+   - Go to https://aws.amazon.com/
+   - Click "Create an AWS Account" and follow the sign-up process
+
+2. Set up IAM User:
+   - Log in to AWS Console
+   - Navigate to IAM (Identity and Access Management)
+   - Click "Users" in the left sidebar, then "Add user"
+   - Set a username and select "Programmatic access"
+   - For permissions, choose "Attach existing policies directly"
+   - Search for and attach: AWSLambdaFullAccess, AmazonS3FullAccess
+   - Complete the user creation process
+   - On the final page, you'll see the Access Key ID and Secret Access Key. Save these securely.
+
+3. Set up S3 Bucket:
+   - In AWS Console, go to S3
+   - Click "Create bucket"
+   - Choose a globally unique name (this will be your BUCKET_NAME)
+   - In "Block Public Access settings", uncheck "Block all public access" (only if you want the bucket to be public)
+   - Keep other settings as default and create the bucket
+   - Note the bucket's region, you'll need this for AWS_REGION
+
+4. Set up Lambda Function:
+   - In AWS Console, go to Lambda
+   - Click "Create function"
+   - Choose "Author from scratch"
+   - Set a name for your function (this will be your LAMBDA_FUNCTION_NAME)
+   - Choose Node.js as the runtime
+   - For execution role, choose "Create a new role with basic Lambda permissions"
+   - Click "Create function"
+   - In the function page, note the function's ARN (Amazon Resource Name)
+
+5. Configure REMOTION_SERVE_URL:
+   - This is the URL where Remotion will serve your rendered videos
+   - It should be the URL of your S3 bucket
+   - Format: https://your-bucket-name.s3.amazonaws.com
+   - Replace 'your-bucket-name' with the actual name of your S3 bucket
+   - Example: If your bucket is named 'my-remotion-videos', your REMOTION_SERVE_URL would be:
+     https://my-remotion-videos.s3.amazonaws.com
+
+6. API_KEY (if applicable):
+   - If your project uses an external API, obtain the key from the service provider
+
+After obtaining all these details, update your .env file with the following:
+
+AWS_REGION=your_aws_region (e.g., us-east-1)
+LAMBDA_FUNCTION_NAME=your_lambda_function_name
+REMOTION_REMOTION_AWS_ACCESS_KEY_ID=your_access_key_id
+REMOTION_REMOTION_AWS_SECRET_ACCESS_KEY=your_secret_access_key
+REMOTION_SERVE_URL=https://your-bucket-name.s3.amazonaws.com
+API_KEY=your_api_key (if applicable)
+BUCKET_NAME=your_s3_bucket_name
+
+Usage Guide:
+1. Launch the application.
+2. Select a template.
+3. Upload media.
+4. Customize your ad.
+5. Preview and render the video.
+6. Download the final video.
+
+Troubleshooting:
+- Check AWS credentials and permissions.
+- Verify Lambda function configuration.
+- Inspect CloudWatch logs for errors.
+
+Contributing:
+- Fork the repository.
+- Create a new branch.
+- Make changes and commit.
+- Push to the branch.
+- Open a Pull Request.
+
+License:
+This project is licensed under the MIT License.
+
