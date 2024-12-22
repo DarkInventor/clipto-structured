@@ -36,13 +36,19 @@
 //     </motion.div>
 //   )
 // }
+
+
+
+
+
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronLeftIcon, ChevronRightIcon, HomeIcon, VideoIcon, TextAlignLeftIcon, PersonIcon, GearIcon, ExitIcon } from '@radix-ui/react-icons'
+import { ChevronLeftIcon, ChevronRightIcon, HomeIcon, VideoIcon, TextAlignLeftIcon, PersonIcon, GearIcon, ExitIcon, BellIcon } from '@radix-ui/react-icons'
 import TemplateList from './TemplateList'
 import ConfigurationPanel from './ConfigurationPanel'
 import { useAuth } from '@/hooks/useAuth'
 import { useRouter } from 'next/navigation'
+import { ChangelogDialog } from './changelog-dialog'
 
 interface SidebarProps {
   children?: React.ReactNode
@@ -98,6 +104,7 @@ export default function Sidebar({
   setBackgroundColor,
 }: SidebarProps) {
   const [activeTab, setActiveTab] = useState('home')
+  const [showChangelog, setShowChangelog] = useState(false)  // Add this state
   const { signOut } = useAuth()
   const router = useRouter()
 
@@ -109,7 +116,7 @@ export default function Sidebar({
 
   const profileItems = [
     { id: 'profile', label: 'Profile', icon: PersonIcon, onClick: () => router.push('/profile') },
-    { id: 'settings', label: 'Settings', icon: GearIcon },
+    { id: 'changelog', label: 'Changelog', icon: BellIcon, onClick: () => setShowChangelog(true) },  // Modified
     { id: 'logout', label: 'Logout', icon: ExitIcon, onClick: signOut },
   ]
 
@@ -165,9 +172,9 @@ export default function Sidebar({
   }
 
   return (
-    <motion.div
+    <><motion.div
       initial={false}
-      animate={{ 
+      animate={{
         width: isOpen ? '24rem' : '0',
         opacity: isOpen ? 1 : 0,
         x: isOpen ? 0 : -320
@@ -178,9 +185,9 @@ export default function Sidebar({
     >
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#86868b]/5 via-transparent to-[#e7dfd6]/5 opacity-30" />
-      
+
       {/* Animated Glow Effect */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: [0.1, 0.2, 0.1] }}
@@ -202,10 +209,9 @@ export default function Sidebar({
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={`p-3 rounded-xl mb-3 group transition-all duration-500 ease-out
-                    ${activeTab === item.id ? 
-                      'bg-gradient-to-r from-[#bdc2c9]/20 to-[#e7dfd6]/20 text-white shadow-lg shadow-black/20' : 
-                      'text-[#86868b] hover:text-[#bdc2c9] hover:bg-white/5'
-                    }`}
+                    ${activeTab === item.id ?
+                      'bg-gradient-to-r from-[#bdc2c9]/20 to-[#e7dfd6]/20 text-white shadow-lg shadow-black/20' :
+                      'text-[#86868b] hover:text-[#bdc2c9] hover:bg-white/5'}`}
                 >
                   <Icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-500" />
                 </button>
@@ -235,6 +241,8 @@ export default function Sidebar({
           {renderContent()}
         </div>
       </div>
-    </motion.div>
+    </motion.div><ChangelogDialog
+        open={showChangelog}
+        onOpenChange={setShowChangelog} /></>
   )
 }

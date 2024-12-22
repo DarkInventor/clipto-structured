@@ -12,8 +12,11 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { ChangelogDialog } from "./changelog-dialog"
+import { useState } from 'react'
 
 export function SiteHeader() {
+  const [showChangelog, setShowChangelog] = useState(false)
   return (
     <header className="fixed top-0 z-50 w-full bg-black/50 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -82,9 +85,15 @@ export function SiteHeader() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/about" legacyBehavior passHref>
-              <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-gray-700 hover:text-[#fffaf6]`}>
-                  <span className="text-[#c8c2bd]">Changelog</span>
-                </NavigationMenuLink>
+              <NavigationMenuLink 
+            className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-gray-700 hover:text-[#fffaf6]`}
+            onClick={(e) => {
+              e.preventDefault()
+              setShowChangelog(true)
+            }}
+          >
+            <span className="text-[#c8c2bd]">Changelog</span>
+          </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -97,6 +106,10 @@ export function SiteHeader() {
           Sign In
         </Button>
       </div>
+      <ChangelogDialog 
+        open={showChangelog}
+        onOpenChange={setShowChangelog}
+      />
     </header>
   )
 }
