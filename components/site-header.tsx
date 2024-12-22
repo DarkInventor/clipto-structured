@@ -23,8 +23,8 @@ export function SiteHeader() {
         <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent text-[#c8c2bd] hover:bg-gray-700 hover:text-[#fffaf6] border-none">Getting started</NavigationMenuTrigger>
-              <NavigationMenuContent className='bg-black border-black'>
+              <NavigationMenuTrigger className="bg-transparent text-[#c8c2bd] hover:bg-gray-700 hover:text-[#fffaf6] border-none">Getting Started</NavigationMenuTrigger>
+              <NavigationMenuContent className='bg-black border-black '>
                 <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
                   <li className="row-span-3 ">
                     <NavigationMenuLink asChild >
@@ -33,37 +33,57 @@ export function SiteHeader() {
                         href="/"
                       >
                         <div className="mb-2 mt-4 text-lg font-medium text-[#fffaf6]">
-                          Illuminated Text
+                          Mock Studio
                         </div>
                         <p className="text-sm leading-tight text-[#e7dfd6]">
-                          Beautiful, glowing text for your next project.
+                          Transform Screenshots Into Stunning Video Ads In Seconds
                         </p>
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/docs" title="Introduction">
-                    Re-usable components built using Radix UI and Tailwind CSS.
+                  <ListItem href="/intro" title="Introduction">
+                    Learn how Mock Studio can transform your screenshots.
                   </ListItem>
-                  <ListItem href="/docs/installation" title="Installation">
-                    How to install dependencies and structure your app.
+                  <ListItem href="/blog" title="Blog">
+                    Read our latest articles and updates about video ad creation.
                   </ListItem>
-                  <ListItem href="/docs/primitives/typography" title="Typography">
-                    Styles for headings, paragraphs, lists...etc
-                  </ListItem>
+                  <ListItem href="/changelog" title="Changelog">
+                    Stay up to date with our latest features and improvements.
+                  </ListItem>                  
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem >
-              <Link href="/docs" legacyBehavior passHref>
-                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-gray-700 hover:text-[#fffaf6]`}>
-                  <span className="text-[#c8c2bd]">Documentation</span>
+              <Link href="/#howitworks" legacyBehavior passHref>
+              <NavigationMenuLink 
+                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-gray-700 hover:text-[#fffaf6] active:bg-gray-700 active:text-black focus:bg-gray-700 focus:text-black`}
+                  onClick={(e) => {
+                    const span = e.currentTarget.querySelector('span');
+                    if (span) span.style.color = 'white';
+                  }}
+                >
+                  <span className="text-[#c8c2bd]">How it Works?</span>
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+           
+            <NavigationMenuItem>
+              <Link href="/#pricing" legacyBehavior passHref>
+                <NavigationMenuLink 
+                  className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-gray-700 hover:text-[#fffaf6] active:bg-gray-700 active:text-black focus:bg-gray-700 focus:text-black`}
+                  onClick={(e) => {
+                    const span = e.currentTarget.querySelector('span');
+                    if (span) span.style.color = 'white';
+                  }}
+                >
+                  <span className="text-[#c8c2bd]">Pricing</span>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/about" legacyBehavior passHref>
               <NavigationMenuLink className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-gray-700 hover:text-[#fffaf6]`}>
-                  <span className="text-[#c8c2bd]">About</span>
+                  <span className="text-[#c8c2bd]">Changelog</span>
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>

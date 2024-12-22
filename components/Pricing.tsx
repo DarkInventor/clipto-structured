@@ -62,10 +62,10 @@ export default function PricingComponent() {
   ]
 
   return (
-    <section className="bg-black py-20 text-white">
+    <section className="bg-black pt-28 text-white pb-20" id="pricing">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-sm font-semibold uppercase tracking-wider text-[#86868b]">Pricing</h2>
-        <h1 className="text-[2em] sm:text-[2.5em] md:text-[3em] font-semibold leading-[1.0625] tracking-[-0.009em] text-[#c8c2bd] text-center">Simple pricing for everyone.</h1>
+        <h1 className="ttext-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd] flex justify-center mt-6">Simple pricing for everyone.</h1>
         <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">
           Choose an affordable plan that's packed with the best features for engaging your audience, creating
           customer loyalty, and driving sales.

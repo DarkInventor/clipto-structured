@@ -7,6 +7,9 @@ import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
 import HowItWorks from "@/components/HowItWorks";
 import CTASection from "@/components/CTA";
+import OverlappingAppShowcase from "@/components/overlapping-showcase";
+import AnimatedStats from "@/components/animated-stats";
+import FAQSection from "@/components/faq-section";
 
 
 export default function Home() {
@@ -16,8 +19,11 @@ export default function Home() {
       {/* <Landing /> */}
       {/* <Navbar /> */}
       <Hero />
+      <OverlappingAppShowcase />
+      <AnimatedStats />
       <HowItWorks />
       <Pricing />
+      <FAQSection />
       <CTASection />
       < Footer />
       <Toaster />

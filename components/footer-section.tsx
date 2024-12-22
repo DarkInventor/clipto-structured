@@ -10,10 +10,10 @@ export default function Footer() {
           {/* Logo and Tagline */}
           <div className="mb-8 lg:mb-0">
             <Link href="/" className="flex items-center">
-              <img src="https://pub-0cd6f9d4131f4f79ac40219248ae64db.r2.dev/logo.svg" alt="Logo" className="w-7 h-7 mr-3" />
-              <span className="text-[#c8c2bd]  font-bold lg:text-xl text-[1em]">Easy UI</span>
+              {/* <img src="https://pub-0cd6f9d4131f4f79ac40219248ae64db.r2.dev/logo.svg" alt="Logo" className="w-7 h-7 mr-3" /> */}
+              <span className="text-[#c8c2bd]  font-bold lg:text-xl text-[1em]">Mock Studio</span>
             </Link>
-            <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd]">Collection of beautiful website templates</p>
+            <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd] max-w-[xl]">Transform Screenshots Into Stunning Video Ads In Seconds</p>
           </div>
 
           {/* Links Sections */}
