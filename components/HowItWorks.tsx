@@ -35,9 +35,9 @@ export default function HowItWorks() {
               <div className="absolute inset-0 bg-gradient-to-tr from-[#bdc2c9]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <Image 
                 className="w-full h-full transform group-hover:scale-105 transition-transform duration-700"
-                src="/step1.png"
+                src="https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/step1.png"
                 fill           
-                alt="step-1"
+                alt="step1"
               />
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function HowItWorks() {
               <div className="absolute inset-0 bg-gradient-to-tr from-[#bdc2c9]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <Image 
                 className="w-full h-full transform group-hover:scale-105 transition-transform duration-700"
-                src="/step2.png"
+                src="https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/step2.png"
                 fill           
                 alt="step-2"
               />
@@ -87,7 +87,7 @@ export default function HowItWorks() {
               <div className="absolute inset-0 bg-gradient-to-tr from-[#bdc2c9]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <Image 
                 className="w-full h-full transform group-hover:scale-105 transition-transform duration-700"
-                src="/step3.png"
+                src="https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/step3.png"
                 fill           
                 alt="step-3"
               />
