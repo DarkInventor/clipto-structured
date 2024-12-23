@@ -33,7 +33,7 @@ export function SiteHeader() {
                     <NavigationMenuLink asChild >
                       <a
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[#cfcfcf] to-[#000000] p-6 no-underline outline-none focus:shadow-md"
-                        href="/"
+                        href="/#"
                       >
                         <div className="mb-2 mt-4 text-lg font-medium text-[#fffaf6]">
                           Mock Studio
@@ -44,15 +44,21 @@ export function SiteHeader() {
                       </a>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/intro" title="Introduction">
+                  <ListItem href="/#" title="Introduction">
                     Learn how Mock Studio can transform your screenshots.
                   </ListItem>
-                  <ListItem href="/blog" title="Blog">
+                  <ListItem href="/#" title="Blog">
                     Read our latest articles and updates about video ad creation.
                   </ListItem>
-                  <ListItem href="/changelog" title="Changelog">
+                  {/* <ListItem href="/changelog" title="Changelog">               
                     Stay up to date with our latest features and improvements.
-                  </ListItem>                  
+                  </ListItem>                   */}
+                   <ListItem title="Changelog" onClick={(e: { preventDefault: () => void }) => {
+              e.preventDefault()
+              setShowChangelog(true)
+            }}>
+                 Stay up to date with our latest features and improvements.
+            </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>

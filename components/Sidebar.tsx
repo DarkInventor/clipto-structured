@@ -1,12 +1,12 @@
 // import React, { useState } from 'react'
 // import { motion } from 'framer-motion'
-// import { ChevronLeftIcon, ChevronRightIcon, HomeIcon, VideoIcon, TextAlignLeftIcon, PersonIcon, GearIcon, ExitIcon, BellIcon } from '@radix-ui/react-icons'
+// import { ChevronLeftIcon, ChevronRightIcon, HomeIcon, VideoIcon, TextAlignLeftIcon, PersonIcon, GearIcon, ExitIcon, BellIcon, TrashIcon } from '@radix-ui/react-icons'
 // import TemplateList from './TemplateList'
 // import ConfigurationPanel from './ConfigurationPanel'
 // import { useAuth } from '@/hooks/useAuth'
 // import { useRouter } from 'next/navigation'
 // import { ChangelogDialog } from './changelog-dialog'
-// import { Project } from '@/hooks/useProjects'
+// import { Project, useProjects } from '@/hooks/useProjects'
 
 // interface SidebarProps {
 //   children?: React.ReactNode
@@ -36,7 +36,6 @@
 //   dispatch: (action: any) => void
 //   backgroundColor: string
 //   setBackgroundColor: (color: string) => void
-//   projects: Project[]
 // }
 
 // export default function Sidebar({ 
@@ -61,12 +60,12 @@
 //   dispatch,
 //   backgroundColor,
 //   setBackgroundColor,
-//   projects,
 // }: SidebarProps) {
 //   const [activeTab, setActiveTab] = useState('home')
 //   const [showChangelog, setShowChangelog] = useState(false)
 //   const { signOut } = useAuth()
 //   const router = useRouter()
+//   const { projects, deleteProject, loading } = useProjects()
 
 //   const menuItems = [
 //     { id: 'home', label: 'Home', icon: HomeIcon },
@@ -79,6 +78,17 @@
 //     { id: 'changelog', label: 'Changelog', icon: BellIcon, onClick: () => setShowChangelog(true) },
 //     { id: 'logout', label: 'Logout', icon: ExitIcon, onClick: signOut },
 //   ]
+
+//   const handleDeleteProject = async (projectId: string) => {
+//     if (window.confirm('Are you sure you want to delete this project?')) {
+//       try {
+//         await deleteProject(projectId)
+//       } catch (error) {
+//         console.error('Failed to delete project:', error)
+//         // Optionally, show an error message to the user
+//       }
+//     }
+//   }
 
 //   const renderContent = () => {
 //     switch(activeTab) {
@@ -107,6 +117,7 @@
 //             scenes={scenes}
 //             dispatch={dispatch}
 //             backgroundColor={backgroundColor}
+//             // @ts-ignore
 //             setBackgroundColor={setBackgroundColor}
 //           />
 //         )
@@ -132,18 +143,32 @@
 //                 <h3 className="font-medium bg-gradient-to-r from-[#e7dfd6] to-[#bdc2c9] bg-clip-text text-transparent mb-3">
 //                   Recent Projects
 //                 </h3>
-//                 {projects.length > 0 ? (
+//                 {loading ? (
+//                   <p className="text-sm text-[#86868b] leading-relaxed">Loading projects...</p>
+//                 ) : projects.length > 0 ? (
 //                   <div className="space-y-4">
 //                     {projects.map((project) => (
 //                       <div
 //                         key={project.id}
 //                         className="p-4 rounded-lg bg-black/20 border border-white/10 hover:border-white/10 transition-colors"
 //                       >
-//                         <h4 className="text-white font-medium mb-1">{project.title}</h4>
-//                         <p className="text-sm text-[#86868b] mb-2">{project.description}</p>
-//                         <div className="flex justify-between items-center text-xs text-[#86868b]">
-//                           <span>{project.templateName}</span>
-//                           <span>{new Date(project.createdAt.toDate()).toLocaleDateString()}</span>
+//                         <div className="flex justify-between items-start">
+//                           <div>
+//                             <h4 className="text-white font-medium mb-1">{project.title}</h4>
+//                             <p className="text-sm text-[#86868b] mb-2">{project.description}</p>
+//                             <div className="flex justify-between items-center text-xs text-[#86868b]">
+//                               <span>{project.templateName}</span>
+//                               <span>{new Date(project.createdAt.toDate()).toLocaleDateString()}</span>
+//                             </div>
+//                           </div>
+//                           <button
+//                           // @ts-ignore
+//                             onClick={() => handleDeleteProject(project.id)}
+//                             className="text-red-500 hover:text-red-400 transition-colors"
+//                             title="Delete project"
+//                           >
+//                             <TrashIcon className="w-4 h-4" />
+//                           </button>
 //                         </div>
 //                         {project.renderedVideoUrl && (
 //                           <a
@@ -252,15 +277,8 @@
 
 
 
-
-
-
-
-
-
-
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeftIcon, ChevronRightIcon, HomeIcon, VideoIcon, TextAlignLeftIcon, PersonIcon, GearIcon, ExitIcon, BellIcon, TrashIcon } from '@radix-ui/react-icons'
 import TemplateList from './TemplateList'
 import ConfigurationPanel from './ConfigurationPanel'
@@ -268,7 +286,9 @@ import { useAuth } from '@/hooks/useAuth'
 import { useRouter } from 'next/navigation'
 import { ChangelogDialog } from './changelog-dialog'
 import { Project, useProjects } from '@/hooks/useProjects'
-
+import CreditsPopup from '@/components/credits-popup'
+import { useCredits } from '@/hooks/useCredits'
+import { CreditCard } from 'lucide-react'
 interface SidebarProps {
   children?: React.ReactNode
   className?: string
@@ -327,6 +347,8 @@ export default function Sidebar({
   const { signOut } = useAuth()
   const router = useRouter()
   const { projects, deleteProject, loading } = useProjects()
+  const { credits, loading: creditsLoading, error: creditsError } = useCredits()
+  const [showCreditsPopup, setShowCreditsPopup] = useState(false)
 
   const menuItems = [
     { id: 'home', label: 'Home', icon: HomeIcon },
@@ -335,9 +357,11 @@ export default function Sidebar({
   ]
 
   const profileItems = [
+    { id: 'credits', label: 'Credits', icon: CreditCard, onClick: () => setShowCreditsPopup(true) },
     { id: 'profile', label: 'Profile', icon: PersonIcon, onClick: () => router.push('/profile') },
     { id: 'changelog', label: 'Changelog', icon: BellIcon, onClick: () => setShowChangelog(true) },
     { id: 'logout', label: 'Logout', icon: ExitIcon, onClick: signOut },
+   
   ]
 
   const handleDeleteProject = async (projectId: string) => {
@@ -502,6 +526,9 @@ export default function Sidebar({
                 )
               })}
             </div>
+            
+
+
 
             {/* Bottom Profile Items */}
             <div className="mt-auto mb-8 p-3">
@@ -526,6 +553,17 @@ export default function Sidebar({
           </div>
         </div>
       </motion.div>
+
+      <AnimatePresence>
+        {showCreditsPopup && (
+          <CreditsPopup
+            credits={credits}
+            loading={creditsLoading}
+            error={creditsError}
+            onClose={() => setShowCreditsPopup(false)}
+          />
+        )}
+      </AnimatePresence>
       <ChangelogDialog
         open={showChangelog}
         onOpenChange={setShowChangelog}
@@ -533,4 +571,7 @@ export default function Sidebar({
     </>
   )
 }
+
+
+
 

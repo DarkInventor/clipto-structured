@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Logo and Tagline */}
           <div className="mb-8 lg:mb-0">
             <Link href="/" className="flex items-center">
-              <span className="text-[#c8c2bd] font-bold lg:text-xl text-[1em]">Mocks Studio</span>
+              <span className="text-[#c8c2bd] font-bold lg:text-xl text-[1em]">Mock Studio</span>
             </Link>
             <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd] max-w-[xl]">Create Beautiful Animations From Screenshots & Recordings In Seconds</p>
           </div>
@@ -52,7 +52,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
           <div className="flex space-x-6 mb-4 sm:mb-0">
-            <Link href="https://discord.gg/mocksstudio" className="text-gray-400 hover:text-white transition-colors text-[#c8c2bd]">
+            <Link href="https://discord.gg/Mockstudio" className="text-gray-400 hover:text-white transition-colors text-[#c8c2bd]">
               <DiscordLogoIcon className="h-5 w-5 lg:h-6 lg:w-6 text-[#c8c2bd]" />
               <span className="sr-only text-[#c8c2bd]">Discord</span>
             </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="text-sm text-[#c8c2bd]">
-            Copyright © {new Date().getFullYear()} Mocks Studio. All Rights Reserved.
+            Copyright © {new Date().getFullYear()} Mock Studio. All Rights Reserved.
           </p>
         </div>
       </div>

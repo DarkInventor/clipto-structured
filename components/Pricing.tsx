@@ -10,53 +10,48 @@ export default function PricingComponent() {
 
   const plans = [
     {
-      name: 'Basic',
-      description: 'A basic plan for startups and individual users',
-      price: isAnnual ? 100 : 10,
+      name: 'Free',
+      description: 'Get started with basic features',
+      price: isAnnual ? 0 : 0,
       features: [
-        'AI-powered analytics',
-        'Basic support',
-        '5 projects limit',
-        'Access to basic AI tools',
+        '20 credits',
+        // 'Basic support',
+        // '5 projects limit',
+        // 'Access to basic AI tools',
       ],
     },
     {
-      name: 'Premium',
-      description: 'A premium plan for growing businesses',
-      price: isAnnual ? 200 : 20,
+      name: 'Hobby',
+      description: 'Perfect to get started',
+      price: isAnnual ? 14 : 19,
       features: [
-        'Advanced AI insights',
+        '500 credits',
         'Priority support',
+        'Access to all future updates',
+      ],
+     
+    },
+    {
+      name: 'Creator',
+      description: 'For creators looking to build a following',
+      price: isAnnual ? 28 : 39,
+      features: [
+        '1,000 credits',
+        '24/7 dedicated support',
         'Unlimited projects',
-        'Access to all AI tools',
-        'Custom integrations',
+        'Access to all future updates'
       ],
       highlighted: true,
     },
     {
-      name: 'Enterprise',
-      description: 'An enterprise plan with advanced features for large organizations',
-      price: isAnnual ? 500 : 50,
+      name: 'Pro Plan',
+      description: 'For those who need videos at scale',
+      price: isAnnual ? 62 : 89,
       features: [
-        'Custom AI solutions',
+        '4,000 Credits',
         '24/7 dedicated support',
         'Unlimited projects',
-        'Access to all AI tools',
-        'Custom integrations',
-        'Data security and compliance',
-      ],
-    },
-    {
-      name: 'Ultimate',
-      description: 'The ultimate plan with all features for industry leaders',
-      price: isAnnual ? 800 : 80,
-      features: [
-        'Bespoke AI development',
-        'White-glove support',
-        'Unlimited projects',
-        'Priority access to new AI tools',
-        'Custom integrations',
-        'Highest data security and compliance',
+        'Early Access to all future updates',
       ],
     },
   ]
@@ -67,8 +62,7 @@ export default function PricingComponent() {
         <h2 className="text-center text-sm font-semibold uppercase tracking-wider text-[#86868b]">Pricing</h2>
         <h1 className="ttext-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd] flex justify-center mt-6">Simple pricing for everyone.</h1>
         <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">
-          Choose an affordable plan that's packed with the best features for engaging your audience, creating
-          customer loyalty, and driving sales.
+          Choose a flexible credit plan that renews monthly.
         </p>
 
         <div className="mt-12 flex items-center justify-center space-x-4">
@@ -88,10 +82,15 @@ export default function PricingComponent() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-lg ${
-                plan.highlighted ? 'border border-[#86868b]' : 'border-gray-900 border'
+              className={`rounded-lg relative ${
+                plan.highlighted ? 'border border-green-500' : 'border-gray-900 border'
               } p-8`}
             >
+               {plan.highlighted && (
+                <div className="absolute -top-3 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  Best Value
+                </div>
+              )}
               <h3 className="text-xl font-semibold">{plan.name}</h3>
               <p className="mt-2 text-sm text-[#86868b]">{plan.description}</p>
               <p className="mt-4 text-5xl font-bold">
