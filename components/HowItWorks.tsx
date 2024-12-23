@@ -7,7 +7,7 @@ export default function HowItWorks() {
   return (
     <section className="bg-black text-white pt-40 relative overflow-hidden" id="howitworks">
       {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#86868b]/10 via-transparent to-transparent opacity-40" />
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-[#86868b]/10 via-transparent to-transparent opacity-40" /> */}
     
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-24">
