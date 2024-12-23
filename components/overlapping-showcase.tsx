@@ -38,7 +38,7 @@ export default function OverlappingAppShowcase() {
                 loop
                 playsInline
               >
-                <source src="/overlapping1.mp4" type="video/mp4" />
+                <source src="https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/overlapping1.mp4" type="video/mp4" />
               </video>
               {/* <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                 <h3 className="text-[#fffaf6] font-semibold text-xl">Screenshot to Video</h3>
@@ -57,7 +57,7 @@ export default function OverlappingAppShowcase() {
                 loop
                 playsInline
               >
-                <source src="/overlapping2.mp4" type="video/mp4" />
+                <source src="https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/overlapping2.mp4" type="video/mp4" />
               </video>
               {/* <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                 <h3 className="text-[#fffaf6] font-semibold text-2xl">Video Editor</h3>
@@ -76,7 +76,7 @@ export default function OverlappingAppShowcase() {
                 loop
                 playsInline
               >
-                <source src="/overlapping3.mp4" type="video/mp4" />
+                <source src="https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/overlapping3.mp4" type="video/mp4" />
               </video>
               {/* <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                 <h3 className="text-[#fffaf6] font-semibold text-xl">Export & Share</h3>

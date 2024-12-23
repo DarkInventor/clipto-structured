@@ -60,7 +60,7 @@ export default function PricingComponent() {
     <section className="bg-black pt-28 text-white pb-20" id="pricing">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-sm font-semibold uppercase tracking-wider text-[#86868b]">Pricing</h2>
-        <h1 className="ttext-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd] flex justify-center mt-6">Simple pricing for everyone.</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd] mt-6 mx-auto text-center">Simple pricing for everyone.</h1>
         <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">
           Choose a flexible credit plan that renews monthly.
         </p>

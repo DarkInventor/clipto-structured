@@ -11,7 +11,7 @@ export default function HowItWorks() {
     
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-24">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd]">How It Works</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd]">How it Works</h2>
           <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">Transform your screenshots and screen recordings into stunning video ads in seconds - no design skills needed</p>
         </div>
 
