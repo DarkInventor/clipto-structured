@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Check } from 'lucide-react'
+import MinimalCreditCalculator from './credit-calculator'
 
 export default function PricingComponent() {
   const [isAnnual, setIsAnnual] = useState(false)
@@ -57,7 +58,7 @@ export default function PricingComponent() {
   ]
 
   return (
-    <section className="bg-black pt-28 text-white pb-20" id="pricing">
+    <><section className="bg-black pt-28 text-white pb-0 lg:pb-20 md:pb-20" id="pricing">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-sm font-semibold uppercase tracking-wider text-[#86868b]">Pricing</h2>
         <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd] mt-6 mx-auto text-center">Simple pricing for everyone.</h1>
@@ -70,8 +71,7 @@ export default function PricingComponent() {
           <Switch
             checked={isAnnual}
             onCheckedChange={setIsAnnual}
-            className="data-[state=checked]:bg-[#86868b]"
-          />
+            className="data-[state=checked]:bg-[#86868b]" />
           <span className={`text-sm ${isAnnual ? 'text-white' : 'text-[#86868b]'}`}>Annual</span>
           <span className="ml-2 rounded-full bg-[#86868b]/20 px-3 py-1 text-xs font-medium text-[#86868b]">
             2 MONTHS FREE
@@ -82,11 +82,9 @@ export default function PricingComponent() {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`rounded-lg relative ${
-                plan.highlighted ? 'border border-green-500' : 'border-gray-900 border'
-              } p-8`}
+              className={`rounded-lg relative ${plan.highlighted ? 'border border-green-500' : 'border-gray-900 border'} p-8`}
             >
-               {plan.highlighted && (
+              {plan.highlighted && (
                 <div className="absolute -top-3 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                   Best Value
                 </div>
@@ -107,9 +105,16 @@ export default function PricingComponent() {
                 ))}
               </ul>
             </div>
+
           ))}
+
         </div>
+
       </div>
+
     </section>
+ 
+    <MinimalCreditCalculator />
+</>
   )
 }

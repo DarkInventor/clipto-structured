@@ -14,7 +14,7 @@ import FAQSection from "@/components/faq-section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-black">
       {/* <App /> */}
       {/* <Landing /> */}
       {/* <Navbar /> */}
