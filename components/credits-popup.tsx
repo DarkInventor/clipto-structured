@@ -273,7 +273,7 @@ export default function CreditsPopup({ credits, loading, error, onClose, plan }:
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <h2 className="text-3xl font-semibold mb-4 bg-gradient-to-b from-[#c8c2bd] to-[#86868b] bg-clip-text text-transparent">
-          Your Credits
+          Your Credits 
         </h2>
         {loading ? (
           <p className="text-[#86868b]">Loading credits...</p>
@@ -288,7 +288,7 @@ export default function CreditsPopup({ credits, loading, error, onClose, plan }:
               transition={{ duration: 1, ease: "easeOut", repeat: Infinity, repeatType: "reverse" }}
             >
               <animated.span className="text-6xl font-bold bg-gradient-to-b from-[#e7dfd6] to-[#bdc2c9] bg-clip-text text-transparent filter-[url(#glow-4)]">
-                {number.to((n) => n.toFixed(0))}
+                {credits}
               </animated.span>
             </motion.div>
             <p className="mt-4 text-[#86868b]">Available credits for creating stunning video ads</p>
