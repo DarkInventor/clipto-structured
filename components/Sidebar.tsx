@@ -460,7 +460,10 @@ export default function Sidebar({
                             href={project.renderedVideoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-2 inline-block text-sm text-blue-400 hover:text-blue-300"
+                            // className="mt-2 inline-block text-sm text-blue-400 hover:text-blue-300 p-2 "
+                           className=' text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] 
+          border-none px-2  py-1.5 rounded-full flex items-center transition-all duration-300 ease-in-out
+          shadow-[0_0_15px_rgba(189,194,201,0.3)] font-[Poppins] font-medium z-10 mt-5 text-center justify-center mx-auto'
                           >
                             View Video
                           </a>
