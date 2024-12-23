@@ -5,12 +5,13 @@ import { useRef, useEffect, useState } from 'react'
 
 interface StatItemProps {
   endValue: number
+  prefix?: string
   suffix?: string
   label: string
   duration?: number
 }
 
-function StatItem({ endValue, suffix = '', label, duration = 2 }: StatItemProps) {
+function StatItem({ endValue, prefix = '', suffix = '', label, duration = 2 }: StatItemProps) {
   const [count, setCount] = useState(0)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -53,7 +54,7 @@ function StatItem({ endValue, suffix = '', label, duration = 2 }: StatItemProps)
       <motion.div 
         className="text-[2em] sm:text-[2.5em] md:text-[3em] font-semibold leading-[1.0625] tracking-[-0.009em] text-[#c8c2bd] mb-2 tabular-nums"
       >
-        {count.toLocaleString()}{suffix}
+        {prefix}{count.toLocaleString()}{suffix}
       </motion.div>
       <div className="text-[#86868b] text-sm font-semibold uppercase tracking-wider">
         {label}
@@ -64,10 +65,10 @@ function StatItem({ endValue, suffix = '', label, duration = 2 }: StatItemProps)
 
 export default function AnimatedStats() {
   const stats = [
-    { value: 1500000, suffix: '+', label: 'Views Generated' },
-    { value: 2000, suffix: '+', label: 'Active Creators' }, 
-    { value: 15000, suffix: '+', label: 'Videos Created' },
-    { value: 85, suffix: '+', label: 'Countries Reached' },
+    { value: 20000, suffix: '+', label: 'Animations Exported' },
+    { value: 2000, suffix: '+', label: 'Active Users' },
+    { value: 100, suffix: 'x', label: 'Faster Ad Creation Time' },
+    { value: 200, prefix: '$', suffix: 'k+', label: 'Saved on Professional Design Costs' },
   ]
 
   return (
@@ -80,7 +81,7 @@ export default function AnimatedStats() {
           className="text-[2em] sm:text-[2.5em] md:text-[3em] font-semibold leading-[1.0625] tracking-[-0.009em] text-center mb-16 max-w-3xl mx-auto"
         >
           <span className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd]">
-            Empowering creators worldwide to produce stunning video content at scale
+            Empowering creators worldwide to produce stunning video animations at scale
           </span>
         </motion.h2>
         
@@ -89,6 +90,7 @@ export default function AnimatedStats() {
             <StatItem 
               key={index}
               endValue={stat.value}
+              prefix={stat.prefix}
               suffix={stat.suffix}
               label={stat.label}
               duration={2 + index * 0.2}

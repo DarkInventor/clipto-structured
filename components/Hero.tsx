@@ -66,7 +66,7 @@ export default function Hero() {
 
         <div className="relative z-10 text-center pb-10">
           <h1 className="text-[2em] sm:text-[2.5em] md:text-[3em] font-semibold leading-[1.0625] tracking-[-0.009em] text-[#c8c2bd]">
-            Transform Screenshots
+            Create Beautiful Animations
             <br />
             <motion.span
               className="relative inline-block"
@@ -75,7 +75,7 @@ export default function Hero() {
               transition={{ duration: 1, ease: "easeOut" }}
             >
               <span className="relative z-10 bg-gradient-to-b from-[#000000] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]">
-                Into Stunning Video Ads
+             From Screenshots & Recordings  
               </span>
               <motion.span
                 className="absolute inset-0 bg-gradient-to-b from-[#dfe5ee] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]"
@@ -84,7 +84,7 @@ export default function Hero() {
                 transition={{ duration: 1, ease: "easeOut", delay: 0.24 }}
                 aria-hidden="true"
               >
-                Into Stunning Video Ads
+                From Screenshots & Recordings  
               </motion.span>
             </motion.span>
             <br />
@@ -99,11 +99,8 @@ export default function Hero() {
             Create Video Ad <ArrowRightIcon className="h-3 w-3" />
           </Button>
           <p className="absolute left-0 right-0 mx-auto mt-[8em] sm:mt-[10em] md:mt-[12em] max-w-[28em] bg-gradient-to-b from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent text-sm sm:text-base md:text-lg">
-            Turn your{" "}
-            <span className="relative inline-block font-extrabold text-[#e7dfd6]">
-              website, product, or software screenshots
-            </span>{" "}
-            into professional video ads instantly. No video editing or animation skills needed - just upload and choose your style.
+            Effortlessly create{" "}
+             <span className="font-extrabold text-[#e7dfd6]">mockup ads</span>, <span className="font-extrabold text-[#e7dfd6]">product videos</span> and <span className="font-extrabold text-[#e7dfd6]">animated website demos</span>. Save time, money, and effort — No Design Skils Required.
           </p>
         </div>
       </div>

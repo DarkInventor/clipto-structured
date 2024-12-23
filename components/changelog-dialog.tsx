@@ -23,17 +23,23 @@ interface ChangelogEntry {
 
 const changelogEntries: ChangelogEntry[] = [
   {
-    date: "November 28, 2024",
-    timeAgo: "24 days ago",
-    title: "Speed Up Your Reddit Videos",
-    description: "We've added a new feature to speed up your reddit videos. You can now speed up your videos by up to 2x. This is great for platforms like TikTok, Instagram, and youtube shorts where users scroll quickly and you want to keep their attention.",
+    date: "December 15, 2024",
+    timeAgo: "2 days ago",
+    title: "Introducing Animation Styles Library",
+    description: "We're excited to launch our new Animation Styles Library! Choose from a curated collection of professional animation styles to make your content stand out. Whether you're creating mockup ads, product videos, or animated website demos, you'll find the perfect style to bring your content to life. Each style is optimized for social media, websites, and presentations.",
     isNew: true
   },
   {
-    date: "November 3, 2024",
-    timeAgo: "about 2 months ago",
-    title: "Introducing Our New Twitter Thread Template",
-    description: "We're excited to announce the launch of our new Twitter Thread Video Template, a powerful feature designed to help you create compelling and engaging short-form video content for Twitter threads effortlessly. This new addition to our platform empowers users to craft visually appealing multi-tweet stories that captivate audiences and boost engagement."
+    date: "December 10, 2024", 
+    timeAgo: "7 days ago",
+    title: "Enhanced Media Upload Support",
+    description: "We've expanded our media upload capabilities to support all common image and video formats. Now you can easily upload your screenshots and screen recordings without worrying about compatibility. The new drag-and-drop interface makes the process even smoother. Plus, your exported videos are automatically optimized for sharing across any digital platform."
+  },
+  {
+    date: "December 1, 2024",
+    timeAgo: "16 days ago",
+    title: "Transform Screenshots to Video Ads",
+    description: "Introducing our core feature - transform your static screenshots and screen recordings into stunning video ads within seconds! No design skills needed. Perfect for creating beautiful mockup ads, product videos, and animated website demos. Save time and money while creating professional-quality content that engages your audience."
   }
 ]
 
@@ -57,7 +63,7 @@ export function ChangelogDialog({ open, onOpenChange }: ChangelogDialogProps) {
               Changelog
             </DialogTitle>
             <p className="text-zinc-400">
-              New updates and improvements to Mock Studio
+              New updates and improvements to Mocks Studio
             </p>
           </DialogHeader>
         </div>
@@ -101,4 +107,3 @@ export function ChangelogDialog({ open, onOpenChange }: ChangelogDialogProps) {
     </Dialog>
   )
 }
-

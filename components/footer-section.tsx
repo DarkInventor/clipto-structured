@@ -10,31 +10,31 @@ export default function Footer() {
           {/* Logo and Tagline */}
           <div className="mb-8 lg:mb-0">
             <Link href="/" className="flex items-center">
-              {/* <img src="https://pub-0cd6f9d4131f4f79ac40219248ae64db.r2.dev/logo.svg" alt="Logo" className="w-7 h-7 mr-3" /> */}
-              <span className="text-[#c8c2bd]  font-bold lg:text-xl text-[1em]">Mock Studio</span>
+              <span className="text-[#c8c2bd] font-bold lg:text-xl text-[1em]">Mocks Studio</span>
             </Link>
-            <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd] max-w-[xl]">Transform Screenshots Into Stunning Video Ads In Seconds</p>
+            <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd] max-w-[xl]">Create Beautiful Animations From Screenshots & Recordings In Seconds</p>
           </div>
 
           {/* Links Sections */}
           <div className="flex flex-wrap justify-between lg:w-1/2 gap-8">
             {/* Product Links */}
             <div>
-              <h3 className=" font-semibold mb-4 text-[#c8c2bd] text-[0.9em] lg:text-[1em]">PRODUCT</h3>
+              <h3 className="font-semibold mb-4 text-[#c8c2bd] text-[0.9em] lg:text-[1em]">PRODUCT</h3>
               <ul className="space-y-2 text-[0.9em] lg:text-[1em]">
-                <li><Link href="/email-collection" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Email Collection</Link></li>
-                <li><Link href="/pricing" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Pricing</Link></li>
-                <li><Link href="/faq" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">FAQ</Link></li>
+                <li><Link href="/#howitworks" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">How it Works</Link></li>
+                <li><Link href="/#pricing" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Pricing</Link></li>
+                <li><Link href="/mockup-home" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Create Video Ad</Link></li>
+                <li><Link href="/changelog" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Changelog</Link></li>
               </ul>
             </div>
 
-            {/* Community Links */}
+            {/* Resources Links */}
             <div>
-              <h3 className="text-[#c8c2bd] font-semibold mb-4 text-[0.9em] lg:text-[1em]">COMMUNITY</h3>
+              <h3 className="text-[#c8c2bd] font-semibold mb-4 text-[0.9em] lg:text-[1em]">RESOURCES</h3>
               <ul className="space-y-2 text-[0.9em] lg:text-[1em]">
-                <li><Link href="/discord" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Discord</Link></li>
-                <li><Link href="/twitter" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Twitter</Link></li>
-                <li><Link href="/email" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Email</Link></li>
+                <li><Link href="/" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Introduction</Link></li>
+                <li><Link href="/blog" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Blog</Link></li>
+                <li><Link href="mailto:ktmehta25@gmail.com" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Support</Link></li>
               </ul>
             </div>
 
@@ -42,8 +42,8 @@ export default function Footer() {
             <div className='text-[0.9em] lg:text-[1em]'>
               <h3 className="text-[#c8c2bd] font-semibold mb-4 text-[0.9em] lg:text-[1em]">LEGAL</h3>
               <ul className="space-y-2 text-[0.9em] lg:text-[1em]">
-                <li><Link href="/terms" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Terms</Link></li>
-                <li><Link href="/privacy" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Privacy</Link></li>
+                <li><Link href="/terms-policy" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Terms</Link></li>
+                <li><Link href="/terms-policy" className="hover:text-white transition-colors text-[#c8c2bd] text-[0.9em] lg:text-[1em]">Privacy</Link></li>
               </ul>
             </div>
           </div>
@@ -52,17 +52,17 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
           <div className="flex space-x-6 mb-4 sm:mb-0">
-            <Link href="/discord" className="text-gray-400 hover:text-white transition-colors text-[#c8c2bd]">
+            <Link href="https://discord.gg/mocksstudio" className="text-gray-400 hover:text-white transition-colors text-[#c8c2bd]">
               <DiscordLogoIcon className="h-5 w-5 lg:h-6 lg:w-6 text-[#c8c2bd]" />
               <span className="sr-only text-[#c8c2bd]">Discord</span>
             </Link>
-            <Link href="/twitter" className="text-[#c8c2bd] hover:text-white transition-colors">
+            <Link href="https://x.com/kathanmehtaa" className="text-[#c8c2bd] hover:text-white transition-colors">
               <Twitter size={24} className='h-5 w-5 lg:h-6 lg:w-6 text-[#c8c2bd]'/>
               <span className="sr-only text-[#c8c2bd]">Twitter</span>
             </Link>
           </div>
           <p className="text-sm text-[#c8c2bd]">
-            Copyright © {new Date().getFullYear()} Easy UI. All Rights Reserved.
+            Copyright © {new Date().getFullYear()} Mocks Studio. All Rights Reserved.
           </p>
         </div>
       </div>

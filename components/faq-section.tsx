@@ -10,23 +10,23 @@ import {
 const faqs = [
   {
     question: "What is Mocks Studio?",
-    answer: "Mocks Studio is an AI-powered platform that transforms static screenshots into professional video ads instantly. Our intuitive tools help you create engaging video content without any video editing or animation skills."
+    answer: "Mocks Studio is an innovative platform that transforms your screenshots and screen recordings into stunning video ads within seconds. We help you create beautiful mockup ads, product videos, and animated website demos without requiring any design skills."
   },
   {
     question: "How does Mocks Studio work?",
-    answer: "Simply upload your screenshot (website, product, or software interface), choose from our curated collection of professional video ad animations, and let our AI handle the transformation. Your video ad will be ready in seconds."
+    answer: "It's simple! First, upload your screenshots or screen recordings - we support all common formats. Then choose from our collection of professional animation styles. Finally, export your animated video ready to share. The entire process takes just seconds."
   },
   {
-    question: "What types of screenshots can I use?",
-    answer: "Mocks Studio supports all common image formats and works with any type of screenshot - whether it's a website, product interface, software application, or mobile app. Our AI adapts to create the most engaging video presentation."
+    question: "What can I create with Mocks Studio?",
+    answer: "You can create professional mockup ads, product videos, and animated website demos. Whether you need content for social media, websites, or presentations, Mocks Studio helps you transform boring screenshots and recordings into engaging animated videos."
   },
   {
-    question: "Do I need video editing experience?",
-    answer: "Not at all! Mocks Studio is designed to be completely user-friendly. There's no need for video editing or animation skills - our AI handles all the complex work while you maintain creative control through simple style choices."
+    question: "Do I need design or animation skills?",
+    answer: "Not at all! Mocks Studio is designed to handle all the complex animation work while you maintain creative control through simple style choices. No design skills needed - just upload your media and let us handle the magic."
   },
   {
-    question: "What video formats and resolutions are supported?",
-    answer: "We support all major video formats and aspect ratios optimized for different social media platforms and advertising channels. Your videos will be exported in high quality, ready to use across any digital platform."
+    question: "What media formats do you support?",
+    answer: "We support all common image and video formats for your screenshots and screen recordings. Your exported videos will be optimized for social media, websites, and presentations - perfect for sharing across any digital platform."
   }
 ]
 
@@ -61,10 +61,10 @@ export default function FAQSection() {
         <div className="text-center mt-12 text-[#86868b]">
           Still have questions? Email us at{' '}
           <a 
-            href="mailto:support@mocksstudio.com" 
+            href="mailto:ktmehta25@gmail.com" 
             className="text-[#c8c2bd] hover:text-[#e7dfd6] transition-colors"
           >
-            support@mocksstudio.com
+            ktmehta25@gmail.com
           </a>
         </div>
       </div>

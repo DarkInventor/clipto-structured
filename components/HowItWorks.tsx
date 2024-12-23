@@ -12,7 +12,7 @@ export default function HowItWorks() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-24">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd]">How It Works</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">Transform any screenshot into a professional video ad in seconds - no video skills needed</p>
+          <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">Transform your screenshots and screen recordings into stunning video ads in seconds - no design skills needed</p>
         </div>
 
         <div className="space-y-48 py-16">
@@ -21,10 +21,10 @@ export default function HowItWorks() {
             <div className="space-y-8">
               <div className="text-[#86868b] text-xl font-semibold">Step 1</div>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#c8c2bd]">
-                Upload Your Screenshot
+                Upload Your Media
               </h3>
               <p className="text-[#86868b] text-lg sm:text-xl max-w-xl">
-                Start by uploading any screenshot - website, product, or software interface. We support all common image formats to turn your static visuals into engaging video ads.
+                Start by uploading your screenshots or screen recordings. We support all common image and video formats to help you create beautiful mockup ads and animated website demos.
               </p>
               <div className="inline-flex items-center space-x-3 text-[#bdc2c9] hover:text-[#e7dfd6] transition-colors cursor-pointer group">
                 <Upload className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -47,14 +47,14 @@ export default function HowItWorks() {
             <div className="space-y-8 lg:order-2">
               <div className="text-[#86868b] text-xl font-semibold">Step 2</div>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#c8c2bd]">
-                Choose Your Ad Style
+                Select Animation Style
               </h3>
               <p className="text-[#86868b] text-lg sm:text-xl max-w-xl">
-                Pick from our curated collection of professional video ad animations. Each style is designed to grab attention and showcase your product in the most engaging way.
+                Choose from our collection of professional animation styles. Whether you're creating mockup ads, product videos, or animated website demos, we have the perfect style to make your content stand out.
               </p>
               <div className="inline-flex items-center space-x-3 text-[#bdc2c9] hover:text-[#e7dfd6] transition-colors cursor-pointer group">
                 <Palette className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span className="group-hover:translate-x-1 transition-transform">Browse ad styles</span>
+                <span className="group-hover:translate-x-1 transition-transform">Browse animation styles</span>
               </div>
             </div>
             <div className="relative aspect-video rounded-2xl overflow-hidden border border-[#86868b]/20 lg:order-1 group-hover:border-[#bdc2c9]/30 transition-colors shadow-2xl">
@@ -73,14 +73,14 @@ export default function HowItWorks() {
             <div className="space-y-8">
               <div className="text-[#86868b] text-xl font-semibold">Step 3</div>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#c8c2bd]">
-                Generate Your Video Ad
+                Export & Download
               </h3>
               <p className="text-[#86868b] text-lg sm:text-xl max-w-xl">
-                Click once and watch as your screenshot transforms into a polished video ad. Our AI handles all the animation work, delivering a professional result in seconds - no video editing skills required.
+                Once your animation is ready, export and download it. Perfect for social media, websites, or presentations - get your professional video ad ready to share in seconds.
               </p>
               <div className="inline-flex items-center space-x-3 text-[#bdc2c9] hover:text-[#e7dfd6] transition-colors cursor-pointer group">
                 <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span className="group-hover:translate-x-1 transition-transform">Create video ad</span>
+                <span className="group-hover:translate-x-1 transition-transform">Download video</span>
               </div>
             </div>
             <div className="relative aspect-video rounded-2xl overflow-hidden border border-[#86868b]/20 group-hover:border-[#bdc2c9]/30 transition-colors shadow-2xl">

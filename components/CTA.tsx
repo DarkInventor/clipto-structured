@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function CTASection() {
   return (
     <section className="py-24 bg-black font-[Poppins] text-[calc(var(--_size)*0.022)] [--_factor:min(1000px,100vh)] [--_size:min(var(--_factor),100vw)]">
-      <div className="w-full mx-auto px-5 sm:px-10 md:px-12 lg:px-20">
+      <div className="w-full mx-auto px-5 sm:px-10 md:px-12 lg:px-40">
         <motion.div 
           className="w-full relative py-8 md:py-10 px-6 md:px-8 rounded-2xl bg-black overflow-hidden flex justify-center items-center"
           initial={{ opacity: 0, y: 50 }}
@@ -32,14 +32,14 @@ export default function CTASection() {
               transition={{ duration: 1, ease: 'easeInOut' }}
             />
           </motion.div>
-          <div className="mx-auto text-center w-full relative space-y-8">
+          <div className="mx-auto text-center w-full relative space-y-8 max-w-6xl">
             <motion.h2 
               className="text-[2em] sm:text-[2.5em] md:text-[3em] font-semibold leading-[1.0625] tracking-[-0.009em] text-[#c8c2bd]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              Quick Start your{' '}
+              Turn Your {' '}
               <motion.span
                 className="relative inline-block"
                 initial={{ scale: 1 }}
@@ -47,7 +47,7 @@ export default function CTASection() {
                 transition={{ duration: 1, ease: 'easeOut' }}
               >
                 <span className="relative z-10 bg-gradient-to-b from-[#dfe5ee] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]">
-                  Strategic Digital
+                   &nbsp;Boring Screenshots & Recordings
                 </span>
                 <motion.span 
                   className="absolute inset-0 bg-gradient-to-b from-[#dfe5ee] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]"
@@ -56,10 +56,10 @@ export default function CTASection() {
                   transition={{ duration: 1, ease: 'easeOut', delay: 0.24 }}
                   aria-hidden="true"
                 >
-                  Strategic Digital
-                </motion.span>
+                 &nbsp;Boring Screenshots & Recordings 
+                </motion.span>{' '}
               </motion.span>{' '}
-              Marketing Campaign
+                  into Animated Videos within Seconds
             </motion.h2>
             <motion.p 
               className="absolute left-0 right-0 mx-auto mt-[8em] sm:mt-[10em] md:mt-[12em] max-w-[28em] bg-gradient-to-b from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent text-sm sm:text-base md:text-lg"
@@ -67,9 +67,8 @@ export default function CTASection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              Elevate your brand's online presence with our cutting-edge digital marketing strategies. 
-              Let's transform your vision into{' '}
-              <span className="relative inline-block font-extrabold text-[#e7dfd6]">measurable success.</span>
+              Create stunning video ads and website demos in minutes. No design skills needed - just upload your screenshots and let us{' '}
+              <span className="relative inline-block font-extrabold text-[#e7dfd6]">handle the magic.</span>
             </motion.p>
             <motion.div 
               className="mx-auto max-w-md sm:max-w-xl flex justify-center pt-24"
@@ -78,7 +77,7 @@ export default function CTASection() {
               transition={{ delay: 0.6, duration: 0.5 }}
             >
               <Link href="/contact" className="outline-none h-12 px-5 rounded-xl bg-gradient-to-r from-[#86868b] to-[#bdc2c9] text-black font-semibold flex items-center justify-center hover:from-[#bdc2c9] hover:to-[#e7dfd6] transition-all duration-300">
-                Get In Touch
+                Get Started Now
               </Link>
             </motion.div>
           </div>
