@@ -1,5 +1,5 @@
 // import React, { useState } from 'react'
-// import { motion } from 'framer-motion'
+// import { AnimatePresence, motion } from 'framer-motion'
 // import { ChevronLeftIcon, ChevronRightIcon, HomeIcon, VideoIcon, TextAlignLeftIcon, PersonIcon, GearIcon, ExitIcon, BellIcon, TrashIcon } from '@radix-ui/react-icons'
 // import TemplateList from './TemplateList'
 // import ConfigurationPanel from './ConfigurationPanel'
@@ -7,7 +7,9 @@
 // import { useRouter } from 'next/navigation'
 // import { ChangelogDialog } from './changelog-dialog'
 // import { Project, useProjects } from '@/hooks/useProjects'
-
+// import CreditsPopup from '@/components/credits-popup'
+// import { useCredits } from '@/hooks/useCredits'
+// import { CreditCard } from 'lucide-react'
 // interface SidebarProps {
 //   children?: React.ReactNode
 //   className?: string
@@ -66,6 +68,8 @@
 //   const { signOut } = useAuth()
 //   const router = useRouter()
 //   const { projects, deleteProject, loading } = useProjects()
+//   const { credits, loading: creditsLoading, error: creditsError } = useCredits()
+//   const [showCreditsPopup, setShowCreditsPopup] = useState(false)
 
 //   const menuItems = [
 //     { id: 'home', label: 'Home', icon: HomeIcon },
@@ -74,9 +78,11 @@
 //   ]
 
 //   const profileItems = [
+//     { id: 'credits', label: 'Credits', icon: CreditCard, onClick: () => setShowCreditsPopup(true) },
 //     { id: 'profile', label: 'Profile', icon: PersonIcon, onClick: () => router.push('/profile') },
 //     { id: 'changelog', label: 'Changelog', icon: BellIcon, onClick: () => setShowChangelog(true) },
 //     { id: 'logout', label: 'Logout', icon: ExitIcon, onClick: signOut },
+   
 //   ]
 
 //   const handleDeleteProject = async (projectId: string) => {
@@ -175,7 +181,10 @@
 //                             href={project.renderedVideoUrl}
 //                             target="_blank"
 //                             rel="noopener noreferrer"
-//                             className="mt-2 inline-block text-sm text-blue-400 hover:text-blue-300"
+//                             // className="mt-2 inline-block text-sm text-blue-400 hover:text-blue-300 p-2 "
+//                            className=' text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] 
+//           border-none px-2  py-1.5 rounded-full flex items-center transition-all duration-300 ease-in-out
+//           shadow-[0_0_15px_rgba(189,194,201,0.3)] font-[Poppins] font-medium z-10 mt-5 text-center justify-center mx-auto'
 //                           >
 //                             View Video
 //                           </a>
@@ -241,6 +250,9 @@
 //                 )
 //               })}
 //             </div>
+            
+
+
 
 //             {/* Bottom Profile Items */}
 //             <div className="mt-auto mb-8 p-3">
@@ -265,6 +277,17 @@
 //           </div>
 //         </div>
 //       </motion.div>
+
+//       <AnimatePresence>
+//         {showCreditsPopup && (
+//           <CreditsPopup
+//             credits={credits}
+//             loading={creditsLoading}
+//             error={creditsError}
+//             onClose={() => setShowCreditsPopup(false)}
+//           />
+//         )}
+//       </AnimatePresence>
 //       <ChangelogDialog
 //         open={showChangelog}
 //         onOpenChange={setShowChangelog}
@@ -272,7 +295,6 @@
 //     </>
 //   )
 // }
-
 
 
 
@@ -289,6 +311,7 @@ import { Project, useProjects } from '@/hooks/useProjects'
 import CreditsPopup from '@/components/credits-popup'
 import { useCredits } from '@/hooks/useCredits'
 import { CreditCard } from 'lucide-react'
+
 interface SidebarProps {
   children?: React.ReactNode
   className?: string
@@ -347,7 +370,7 @@ export default function Sidebar({
   const { signOut } = useAuth()
   const router = useRouter()
   const { projects, deleteProject, loading } = useProjects()
-  const { credits, loading: creditsLoading, error: creditsError } = useCredits()
+  const { credits, loading: creditsLoading, error: creditsError, plan } = useCredits()
   const [showCreditsPopup, setShowCreditsPopup] = useState(false)
 
   const menuItems = [
@@ -564,6 +587,7 @@ export default function Sidebar({
             loading={creditsLoading}
             error={creditsError}
             onClose={() => setShowCreditsPopup(false)}
+            plan={plan}
           />
         )}
       </AnimatePresence>
@@ -574,7 +598,4 @@ export default function Sidebar({
     </>
   )
 }
-
-
-
 
