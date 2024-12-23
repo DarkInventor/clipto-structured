@@ -213,6 +213,8 @@ import { motion } from 'framer-motion'
 import { useAuth } from '@/hooks/useAuth'
 import { useProjects, Scene } from '@/hooks/useProjects'
 import RecentProjects from '@/components/RecentProjects'
+import { Button } from '@/components/ui/button'
+import { DownloadIcon } from '@radix-ui/react-icons'
 
 export default function App() {
   const { user, signOut } = useAuth()
@@ -245,6 +247,27 @@ export default function App() {
   }
 
   const scenes = history.present?.scenes || []
+
+  const handleDownload = async () => {
+    if (!renderedVideoUrl) return;
+    console.log('Downloading video from URL:', renderedVideoUrl);
+
+    try {
+      const response = await fetch(renderedVideoUrl);
+      const blob = await response.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = `clipto-video-${Date.now()}.mp4`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (error) {
+      console.error('Error downloading video:', error);
+      alert('Failed to download video. Please try again.');
+    }
+  };
   
   const handleRender = async () => {
     console.log('Starting render process...');
@@ -373,13 +396,17 @@ export default function App() {
         )}
         {renderedVideoUrl && (
           <div className="absolute bottom-4 right-4 flex gap-2">
-            <a
-              href={renderedVideoUrl}
-              download
-              className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
-            >
-              Download Rendered Video
-            </a>
+            <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleDownload}
+          className="text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] 
+            border-none px-6 py-2.5 rounded-full flex items-center transition-all duration-300 ease-in-out
+            shadow-[0_0_15px_rgba(189,194,201,0.3)] font-[Poppins] font-medium"
+        >
+          <DownloadIcon className="mr-2 h-4 w-4" />
+          Download Video
+        </motion.button>
             <button
               onClick={async () => {
                 setSaveStatus('saving');

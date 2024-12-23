@@ -176,7 +176,7 @@ export default function ConfigurationPanel({
           />
         </div>
 
-        <div className=" rounded-xl bg-gradient-to-b from-black/40 to-black/20  backdrop-blur-sm shadow-lg">
+        {/* <div className=" rounded-xl bg-gradient-to-b from-black/40 to-black/20  backdrop-blur-sm shadow-lg">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-medium bg-gradient-to-r from-[#e7dfd6] to-[#bdc2c9] bg-clip-text text-transparent">Audio Volume</h3>
             <button 
@@ -202,7 +202,7 @@ export default function ConfigurationPanel({
             value={audioVolume}
             onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
