@@ -14,9 +14,11 @@ import {
 } from "@/components/ui/navigation-menu"
 import { ChangelogDialog } from "./changelog-dialog"
 import { useState } from 'react'
+import { UpcomingFeaturesDialog } from './upcoming-features-dialog'
 
 export function SiteHeader() {
   const [showChangelog, setShowChangelog] = useState(false)
+  const [showUpcomingFeatures, setUpcomingFeatures] = useState(false)
   return (
     <header className="fixed top-0 z-50 w-full bg-black/50 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -47,7 +49,10 @@ export function SiteHeader() {
                   <ListItem href="/#" title="Introduction">
                     Learn how Mock Studio can transform your screenshots.
                   </ListItem>
-                  <ListItem href="/#" title="Blog">
+                  <ListItem title="Upcoming Features" onClick={(e: { preventDefault: () => void }) => {
+              e.preventDefault()
+              setUpcomingFeatures(true)
+            }}>
                     Read our latest articles and updates about video ad creation.
                   </ListItem>
                   {/* <ListItem href="/changelog" title="Changelog">               
@@ -112,6 +117,10 @@ export function SiteHeader() {
           Sign In
         </Button>
       </div>
+      <UpcomingFeaturesDialog 
+        open={showUpcomingFeatures}
+        onOpenChange={setUpcomingFeatures}
+      />
       <ChangelogDialog 
         open={showChangelog}
         onOpenChange={setShowChangelog}
