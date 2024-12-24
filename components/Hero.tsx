@@ -98,6 +98,7 @@ export default function Hero() {
           >
             Create Video Ad <ArrowRightIcon className="h-3 w-3" />
           </Button>
+          <p className="mt-4 text-sm text-[#86868b] font-normal ">No Credit Card Required</p>  
           <p className="absolute left-0 right-0 mx-auto mt-[8em] sm:mt-[10em] md:mt-[12em] max-w-[28em] bg-gradient-to-b from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent text-sm sm:text-base md:text-lg">
             Effortlessly create{" "}
              <span className="font-extrabold text-[#e7dfd6]">mockup ads</span>, <span className="font-extrabold text-[#e7dfd6]">product videos</span> and <span className="font-extrabold text-[#e7dfd6]">animated website demos</span>. Save time, money, and effort — No Design Skils Required.

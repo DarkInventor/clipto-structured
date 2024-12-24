@@ -71,15 +71,17 @@ export default function CTASection() {
               <span className="relative inline-block font-extrabold text-[#e7dfd6]">handle the magic.</span>
             </motion.p>
             <motion.div 
-              className="mx-auto max-w-md sm:max-w-xl flex justify-center pt-24"
+              className="mx-auto max-w-md sm:max-w-xl flex justify-center pt-24 flex flex-col w-[20%]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
             >
-              <Link href="/contact" className="outline-none h-12 px-5 rounded-xl bg-gradient-to-r from-[#86868b] to-[#bdc2c9] text-black font-semibold flex items-center justify-center hover:from-[#bdc2c9] hover:to-[#e7dfd6] transition-all duration-300">
+              <Link href="/contact" className="outline-none h-10 px-5 rounded-xl bg-gradient-to-r from-[#86868b] to-[#bdc2c9] text-black font-semibold flex items-center justify-center hover:from-[#bdc2c9] hover:to-[#e7dfd6] transition-all duration-300 mt-5">
                 Get Started Now
               </Link>
+              <p className="mt-4 text-sm text-[#86868b] font-normal">No Credit Card Required</p>  
             </motion.div>
+            
           </div>
         </motion.div>
       </div>

@@ -29,6 +29,7 @@
     "@remotion/player": "4.0.237",
     "@remotion/renderer": "4.0.237",
     "@remotion/studio": "4.0.237",
+    "@stripe/stripe-js": "^5.4.0",
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.0.0",
     "firebase": "^11.1.0",
@@ -40,6 +41,7 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.3.5",
     "remotion": "4.0.237",
+    "stripe": "^17.5.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   },
