@@ -229,8 +229,8 @@ export default function App() {
   const [selectedDuration, setSelectedDuration] = useState(durationOptions[0].value)
   const [leftSidebarOpen, setLeftSidebarOpen] = useState(true)
   const [rightSidebarOpen, setRightSidebarOpen] = useState(true)
-  const [adTitle, setAdTitle] = useState('My new Website')
-  const [adDescription, setAdDescription] = useState('Releasing today!')
+  const [adTitle, setAdTitle] = useState('')
+  const [adDescription, setAdDescription] = useState('')
   const playerRef = useRef<PlayerRef>(null)
   const [backgroundColor, setBackgroundColor] = useState('#000000');
   const [backgroundImage, setBackgroundImage] = useState<string | null>(null);
