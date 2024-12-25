@@ -10,6 +10,7 @@ import CTASection from "@/components/CTA";
 import OverlappingAppShowcase from "@/components/overlapping-showcase";
 import AnimatedStats from "@/components/animated-stats";
 import FAQSection from "@/components/faq-section";
+import { AuthCheck } from "@/components/AuthCheck";
 
 
 export default function Home() {

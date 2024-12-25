@@ -1,94 +1,96 @@
 // "use client";
 
+// import { useState, useEffect } from "react";
+// import { useRouter, useSearchParams } from "next/navigation";
 // import { motion } from "framer-motion";
 // import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input";
 // import { ArrowRightIcon } from "@radix-ui/react-icons";
 // import { SiteHeader } from "@/components/site-header";
-// import { auth, db } from "@/firebaseConfig";
-// import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-// import { useState } from "react";
-// import { useRouter } from "next/navigation";
-// import { doc, updateDoc } from "firebase/firestore";
+// import {
+//   getAuth,
+//   signInWithEmailAndPassword,
+//   signInWithPopup,
+//   GoogleAuthProvider,
+// } from "firebase/auth";
+// import { doc, getDoc, updateDoc } from "firebase/firestore";
+// import { db } from "@/firebaseConfig";
 
 // export default function LoginPage() {
 //   const [email, setEmail] = useState("");
 //   const [password, setPassword] = useState("");
 //   const [error, setError] = useState("");
 //   const router = useRouter();
+//   // @ts-ignore
+//   const searchParams = useSearchParams();
+//   const auth = getAuth();
 
-//   const updateUserDocument = async (user: any) => {
-//     try {
-//       await updateDoc(doc(db, "users", user.uid), {
+//   useEffect(() => {
+//     const unsubscribe = auth.onIdTokenChanged(async (user) => {
+//       if (user) {
+//         const idToken = await user.getIdToken();
+//         document.cookie = `session=${idToken}; path=/; max-age=${60 * 60 * 24 * 5}; SameSite=Strict; Secure`;
+//       } else {
+//         document.cookie = "session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+//       }
+//     });
+
+//     return () => unsubscribe();
+//   }, []);
+
+//   const handleUser = async (user: any) => {
+//     const userDocRef = doc(db, "users", user.uid);
+//     const userDoc = await getDoc(userDocRef);
+
+//     if (userDoc.exists()) {
+//       await updateDoc(userDocRef, {
 //         lastLoginAt: new Date(),
-//         updatedAt: new Date(),
-//         emailVerified: user.emailVerified,
-//         photoURL: user.photoURL || null,
-//         phoneNumber: user.phoneNumber || null,
-//         metadata: {
-//           lastSignInTime: new Date()
-//         }
 //       });
-//     } catch (error: any) {
-//       console.error("Error updating user document:", error);
+//       console.log("User logged in successfully");
+//     } else {
+//       console.error("User document does not exist");
+//       setError("User account not found. Please register.");
 //     }
 //   };
 
-//   const handleEmailSignIn = async (e: React.FormEvent) => {
+//   const redirectAfterLogin = () => {
+//     // @ts-ignore
+//     const from = searchParams.get('from');
+//     if (from === 'pricing') {
+//       router.push('/#pricing');
+//     } else {
+//       router.push('/mockup-home');
+//     }
+//   };
+
+//   const handleEmailLogin = async (e: React.FormEvent) => {
 //     e.preventDefault();
+//     setError("");
 //     try {
 //       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-//       const idToken = await userCredential.user.getIdToken();
-      
-//       // Create session cookie on server
-//       const response = await fetch('/api/session', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'Authorization': `Bearer ${idToken}`
-//         },
-//         body: JSON.stringify({ idToken }),
-//         credentials: 'include'
-//       });
-
-//       if (!response.ok) {
-//         const errorData = await response.json();
-//         throw new Error(errorData.error || 'Failed to create session');
-//       }
-
-//       await updateUserDocument(userCredential.user);
-//       router.push("/mockup-home");
+//       await handleUser(userCredential.user);
+//       redirectAfterLogin();
 //     } catch (error: any) {
-//       setError(error.message);
+//       console.error("Login error:", error);
+//       setError("Invalid email or password. Please try again.");
 //     }
 //   };
 
-//   const handleGoogleSignIn = async () => {
+//   const handleGoogleLogin = async () => {
+//     setError("");
 //     try {
-//       const provider = new GoogleAuthProvider();
-//       const userCredential = await signInWithPopup(auth, provider);
-//       const idToken = await userCredential.user.getIdToken();
-      
-//       // Create session cookie on server
-//       const response = await fetch('/api/session', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//           'Authorization': `Bearer ${idToken}`
-//         },
-//         body: JSON.stringify({ idToken }),
-//         credentials: 'include'
-//       });
-
-//       if (!response.ok) {
-//         const errorData = await response.json();
-//         throw new Error(errorData.error || 'Failed to create session');
-//       }
-
-//       await updateUserDocument(userCredential.user);
-//       router.push("/mockup-home");
+//       const result = await signInWithPopup(auth, new GoogleAuthProvider());
+//       await handleUser(result.user);
+//       redirectAfterLogin();
 //     } catch (error: any) {
-//       setError(error.message);
+//       console.error("Google login error:", error);
+//       if (error.code === "auth/popup-closed-by-user") {
+//         setError("Login cancelled. Please try again.");
+//       } else if (error.code === "auth/popup-blocked") {
+//         setError("Popup was blocked. Please enable popups for this site and try again.");
+//       } else {
+//         setError("An error occurred during login. Please try again.");
+//       }
 //     }
 //   };
 
@@ -119,8 +121,8 @@
 
 //           <div className="relative z-10 w-full max-w-md space-y-8 p-8 rounded-lg border border-white/10 bg-black/50 backdrop-blur-xl">
 //             <div className="text-center">
-//               <h2 className="text-3xl font-semibold text-[#c8c2bd]">Welcome Back</h2>
-//               <p className="mt-2 text-sm text-[#86868b]">Sign in to continue creating stunning video ads</p>
+//               <h2 className="text-3xl font-semibold text-[#c8c2bd]">Login</h2>
+//               <p className="mt-2 text-sm text-[#86868b]">Welcome back! Please login to your account</p>
 //               {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
 //             </div>
 
@@ -129,10 +131,10 @@
 //                 variant="outline"
 //                 className="w-full bg-transparent border-white/10 text-[#c8c2bd] hover:bg-white/5"
 //                 size="lg"
-//                 onClick={handleGoogleSignIn}
+//                 onClick={handleGoogleLogin}
 //               >
 //                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/archive/c/c1/20230822192910%21Google_%22G%22_logo.svg/118px-Google_%22G%22_logo.svg.png" alt="Google" className="mr-2 h-5 w-5" />
-//                 Continue with Google
+//                 Login with Google
 //               </Button>
 
 //               <div className="relative">
@@ -145,51 +147,27 @@
 //               </div>
 //             </div>
 
-//             <form onSubmit={handleEmailSignIn} className="space-y-6">
-//               <div className="space-y-4">
-//                 <div>
-//                   <Input
-//                     type="email"
-//                     placeholder="Email address"
-//                     value={email}
-//                     onChange={(e) => setEmail(e.target.value)}
-//                     className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
-//                   />
-//                 </div>
-//                 <div>
-//                   <Input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={password}
-//                     onChange={(e) => setPassword(e.target.value)}
-//                     className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
-//                   />
-//                 </div>
-//               </div>
-
-//               <div>
-//                 <Button
-//                   type="submit"
-//                   variant="outline"
-//                   className="w-full text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] border-none"
-//                   size="lg"
-//                 >
-//                   Sign in <ArrowRightIcon className="ml-2 h-4 w-4" />
-//                 </Button>
-//               </div>
+//             <form onSubmit={handleEmailLogin} className="space-y-4">
+//               <Input
+//                 placeholder="Email Address"
+//                 type="email"
+//                 value={email}
+//                 onChange={(e) => setEmail(e.target.value)}
+//                 className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
+//                 required
+//               />
+//               <Input
+//                 placeholder="Password"
+//                 type="password"
+//                 value={password}
+//                 onChange={(e) => setPassword(e.target.value)}
+//                 className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
+//                 required
+//               />
+//               <Button type="submit" variant="outline" size="lg" className="w-full text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] border-none p-5">
+//                 Login <ArrowRightIcon className="ml-2" />
+//               </Button>
 //             </form>
-
-//             <div className="text-center text-sm">
-//               <a href="#" className="text-[#86868b] hover:text-[#c8c2bd]">
-//                 Forgot your password?
-//               </a>
-//               <p className="mt-2 text-[#86868b]">
-//                 Don't have an account?{" "}
-//                 <a href="/register" className="text-[#c8c2bd] hover:text-white">
-//                   Sign up
-//                 </a>
-//               </p>
-//             </div>
 //           </div>
 //         </div>
 //       </div>
@@ -197,18 +175,10 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -223,11 +193,13 @@ import {
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 
-export default function LoginPage() {
+// Separate component for search params logic
+function LoginContent() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
   const auth = getAuth();
 
   useEffect(() => {
@@ -258,13 +230,23 @@ export default function LoginPage() {
     }
   };
 
+  const redirectAfterLogin = () => {
+    // @ts-ignore
+    const from = searchParams.get('from');
+    if (from === 'pricing') {
+      router.push('/#pricing');
+    } else {
+      router.push('/mockup-home');
+    }
+  };
+
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       await handleUser(userCredential.user);
-      router.push("/mockup-home");
+      redirectAfterLogin();
     } catch (error: any) {
       console.error("Login error:", error);
       setError("Invalid email or password. Please try again.");
@@ -276,7 +258,7 @@ export default function LoginPage() {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       await handleUser(result.user);
-      router.push("/mockup-home");
+      redirectAfterLogin();
     } catch (error: any) {
       console.error("Google login error:", error);
       if (error.code === "auth/popup-closed-by-user") {
@@ -289,6 +271,62 @@ export default function LoginPage() {
     }
   };
 
+  return (
+    <div className="relative z-10 w-full max-w-md space-y-8 p-8 rounded-lg border border-white/10 bg-black/50 backdrop-blur-xl">
+      <div className="text-center">
+        <h2 className="text-3xl font-semibold text-[#c8c2bd]">Login</h2>
+        <p className="mt-2 text-sm text-[#86868b]">Welcome back! Please login to your account</p>
+        {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+      </div>
+
+      <div className="space-y-4">
+        <Button
+          variant="outline"
+          className="w-full bg-transparent border-white/10 text-[#c8c2bd] hover:bg-white/5"
+          size="lg"
+          onClick={handleGoogleLogin}
+        >
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/archive/c/c1/20230822192910%21Google_%22G%22_logo.svg/118px-Google_%22G%22_logo.svg.png" alt="Google" className="mr-2 h-5 w-5" />
+          Login with Google
+        </Button>
+
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-white/10"></span>
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-black px-2 text-[#86868b]">Or continue with</span>
+          </div>
+        </div>
+      </div>
+
+      <form onSubmit={handleEmailLogin} className="space-y-4">
+        <Input
+          placeholder="Email Address"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
+          required
+        />
+        <Input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
+          required
+        />
+        <Button type="submit" variant="outline" size="lg" className="w-full text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] border-none p-5">
+          Login <ArrowRightIcon className="ml-2" />
+        </Button>
+      </form>
+    </div>
+  );
+}
+
+// Main component with Suspense boundary
+export default function LoginPage() {
   return (
     <>
       <SiteHeader />
@@ -314,59 +352,11 @@ export default function LoginPage() {
             />
           </motion.div>
 
-          <div className="relative z-10 w-full max-w-md space-y-8 p-8 rounded-lg border border-white/10 bg-black/50 backdrop-blur-xl">
-            <div className="text-center">
-              <h2 className="text-3xl font-semibold text-[#c8c2bd]">Login</h2>
-              <p className="mt-2 text-sm text-[#86868b]">Welcome back! Please login to your account</p>
-              {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
-            </div>
-
-            <div className="space-y-4">
-              <Button
-                variant="outline"
-                className="w-full bg-transparent border-white/10 text-[#c8c2bd] hover:bg-white/5"
-                size="lg"
-                onClick={handleGoogleLogin}
-              >
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/archive/c/c1/20230822192910%21Google_%22G%22_logo.svg/118px-Google_%22G%22_logo.svg.png" alt="Google" className="mr-2 h-5 w-5" />
-                Login with Google
-              </Button>
-
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t border-white/10"></span>
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-black px-2 text-[#86868b]">Or continue with</span>
-                </div>
-              </div>
-            </div>
-
-            <form onSubmit={handleEmailLogin} className="space-y-4">
-              <Input
-                placeholder="Email Address"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
-                required
-              />
-              <Input
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-transparent border-white/10 text-[#c8c2bd] placeholder:text-[#86868b] p-5"
-                required
-              />
-              <Button type="submit" variant="outline" size="lg" className="w-full text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] border-none p-5">
-                Login <ArrowRightIcon className="ml-2" />
-              </Button>
-            </form>
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <LoginContent />
+          </Suspense>
         </div>
       </div>
     </>
   );
 }
-

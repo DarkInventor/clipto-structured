@@ -214,7 +214,8 @@ export default function PricingComponent() {
     } else if (stripePriceId) {
       if (!user) {
         console.error('User must be logged in to subscribe')
-        router.push('/login')
+        // router.push('/login')
+        router.push('/login?from=pricing')
         return
       }
 
