@@ -23,7 +23,7 @@ export function SiteHeader() {
     <header className="fixed top-0 z-50 w-full bg-black/50 backdrop-blur-md">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
       <Link href="/" className="text-xl font-bold text-[#c8c2bd]">
-          Mock Studio
+          Animator Studio
         </Link>
         <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
@@ -38,7 +38,7 @@ export function SiteHeader() {
                         href="/#"
                       >
                         <div className="mb-2 mt-4 text-lg font-medium text-[#fffaf6]">
-                          Mock Studio
+                          Animator Studio
                         </div>
                         <p className="text-sm leading-tight text-[#e7dfd6]">
                           Transform Screenshots Into Stunning Video Ads In Seconds
@@ -47,7 +47,7 @@ export function SiteHeader() {
                     </NavigationMenuLink>
                   </li>
                   <ListItem href="/#" title="Introduction">
-                    Learn how Mock Studio can transform your screenshots.
+                    Learn how Animator Studio can transform your screenshots.
                   </ListItem>
                   <ListItem title="Upcoming Features" onClick={(e: { preventDefault: () => void }) => {
               e.preventDefault()

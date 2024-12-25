@@ -69,7 +69,7 @@ export function UpcomingFeaturesDialog({ open, onOpenChange }: UpcomingFeaturesD
               Upcoming Features
             </DialogTitle>
             <p className="text-zinc-400">
-              Exciting new features coming soon to Mock Studio
+              Exciting new features coming soon to Animator Studio
             </p>
           </DialogHeader>
         </div>

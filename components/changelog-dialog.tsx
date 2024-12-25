@@ -63,7 +63,7 @@ export function ChangelogDialog({ open, onOpenChange }: ChangelogDialogProps) {
               Changelog
             </DialogTitle>
             <p className="text-zinc-400">
-              New updates and improvements to Mock Studio
+              New updates and improvements to Animator Studio
             </p>
           </DialogHeader>
         </div>

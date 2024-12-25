@@ -61,7 +61,8 @@ export async function middleware(request: NextRequest) {
     }
     // For all other routes, allow access
     return NextResponse.next()
-  } else {
+  } 
+  else {
     // User is not authenticated, redirect to login
     return NextResponse.redirect(new URL('/login', request.url))
   }

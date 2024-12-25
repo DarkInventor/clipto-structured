@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Logo and Tagline */}
           <div className="mb-8 lg:mb-0">
             <Link href="/" className="flex items-center">
-              <span className="text-[#c8c2bd] font-bold lg:text-xl text-[1em]">Mock Studio</span>
+              <span className="text-[#c8c2bd] font-bold lg:text-xl text-[1em]">Animator Studio</span>
             </Link>
             <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd] max-w-[xl]">Create Beautiful Animations From Screenshots & Recordings In Seconds</p>
           </div>
@@ -62,7 +62,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="text-sm text-[#c8c2bd]">
-            Copyright © {new Date().getFullYear()} Mock Studio. All Rights Reserved.
+            Copyright © {new Date().getFullYear()} Animator Studio. All Rights Reserved.
           </p>
         </div>
       </div>

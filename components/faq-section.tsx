@@ -9,20 +9,20 @@ import {
 
 const faqs = [
   {
-    question: "What is Mock Studio?",
-    answer: "Mock Studio is an innovative platform that transforms your screenshots and screen recordings into stunning video ads within seconds. We help you create beautiful mockup ads, product videos, and animated website demos without requiring any design skills."
+    question: "What is Animator Studio?",
+    answer: "Animator Studio is an innovative platform that transforms your screenshots and screen recordings into stunning video ads within seconds. We help you create beautiful mockup ads, product videos, and animated website demos without requiring any design skills."
   },
   {
-    question: "How does Mock Studio work?",
+    question: "How does Animator Studio work?",
     answer: "It's simple! First, upload your screenshots or screen recordings - we support all common formats. Then choose from our collection of professional animation styles. Finally, export your animated video ready to share. The entire process takes just seconds."
   },
   {
-    question: "What can I create with Mock Studio?",
-    answer: "You can create professional mockup ads, product videos, and animated website demos. Whether you need content for social media, websites, or presentations, Mock Studio helps you transform boring screenshots and recordings into engaging animated videos."
+    question: "What can I create with Animator Studio?",
+    answer: "You can create professional mockup ads, product videos, and animated website demos. Whether you need content for social media, websites, or presentations, Animator Studio helps you transform boring screenshots and recordings into engaging animated videos."
   },
   {
     question: "Do I need design or animation skills?",
-    answer: "Not at all! Mock Studio is designed to handle all the complex animation work while you maintain creative control through simple style choices. No design skills needed - just upload your media and let us handle the magic."
+    answer: "Not at all! Animator Studio is designed to handle all the complex animation work while you maintain creative control through simple style choices. No design skills needed - just upload your media and let us handle the magic."
   },
   {
     question: "What media formats do you support?",
