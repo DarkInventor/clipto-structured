@@ -34,13 +34,13 @@ export default function Hero() {
   return (
     <><SiteHeader /><div className="min-h-screen w-screen overflow-hidden bg-black font-[Poppins] text-[calc(var(--_size)*0.022)] [--_factor:min(1000px,100vh)] [--_size:min(var(--_factor),100vw)]">
       <div className="relative flex flex-col min-h-screen w-full items-center justify-center pt-10 px-4 md:px-0 pb-0">
-        <div className="z-10 flex min-h-10 items-center justify-center pb-0 py-10 pb-3">
+        <div className="z-10 flex min-h-10 items-center justify-center pb-0 py-9 pb-3">
           <div
             className={cn(
-              "group rounded-full border border-white/10 bg-transparent text-[#86868b] transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+              "group rounded-full border border-white/10 bg-transparent text-[#86868b] transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800 "
             )}
           >
-            <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-0.5 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+            <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-0.5 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400 ">
               <span>✨ Introducing Animator Studio</span>
               <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
             </AnimatedShinyText>
@@ -98,7 +98,7 @@ export default function Hero() {
           >
             Create Video Ad <ArrowRightIcon className="h-3 w-3" />
           </Button>
-          <p className="mt-4 text-sm text-[#86868b] font-normal ">No Credit Card Required</p>  
+          {/* <p className="pt-2 text-sm text-[#86868b] font-normal">No Credit Card Required</p>   */}
           <p className="absolute left-0 right-0 mx-auto mt-[8em] sm:mt-[10em] md:mt-[12em] max-w-[28em] bg-gradient-to-b from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent text-sm sm:text-base md:text-lg">
             Effortlessly create{" "}
              <span className="font-extrabold text-[#e7dfd6]">mockup ads</span>, <span className="font-extrabold text-[#e7dfd6]">product videos</span> and <span className="font-extrabold text-[#e7dfd6]">animated website demos</span>. Save time, money, and effort — No Design Skils Required.

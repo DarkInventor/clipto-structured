@@ -65,7 +65,7 @@ const config: Config = {
   			rainbow: 'rainbow var(--speed, 2s) infinite linear',
   			'shiny-text': 'shiny-text 8s infinite',
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
   		},
   		keyframes: {
   			rainbow: {
