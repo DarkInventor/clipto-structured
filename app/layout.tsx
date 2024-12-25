@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { AuthCheck } from "@/components/AuthCheck";
+import { getAnalytics, logEvent } from "firebase/analytics";
+import { Analytics } from "@/components/FirebaseAnalytics";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,6 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
+        <Analytics />        
         <AuthCheck />
         {children}
       </body>
