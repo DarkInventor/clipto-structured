@@ -18,10 +18,11 @@ export default function OverlappingAppShowcase() {
       {/* Added heading section */}
       <div className="text-center mb-16 max-w-3xl mb-28">
         <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd]">
-          Create Videos Like These In Minutes
+          Made with Animator Studio
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">
-          Whether you're showcasing your app, website or product - turn your screenshots into engaging video that capture attention. No video editing skills needed.
+          {/* Whether you're showcasing your app, website or product - turn your screenshots and recordings into engaging video that capture attention. No video editing skills needed. */}
+          Thousands of people use Animator Studio to animate websites, product demos, courses, tutorials and social media posts.
         </p>
       </div>
 

@@ -12,7 +12,7 @@ export default function HowItWorks() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-24">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#c8c2bd]">How it Works</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">Transform your screenshots and screen recordings into stunning video ads in seconds - no design skills needed</p>
+          <p className="mx-auto mt-6 max-w-2xl text-center lg:text-xl text-[#86868b] text-[1em]">Make your website, product demos and launches easier to follow while grabbing more attention. Especially on smaller screens.</p>
         </div>
 
         <div className="space-y-48 py-16">
@@ -24,7 +24,7 @@ export default function HowItWorks() {
                 Upload Your Media
               </h3>
               <p className="text-[#86868b] text-lg sm:text-xl max-w-xl">
-                Start by uploading your screenshots or screen recordings. We support all common image and video formats to help you create beautiful mockup ads and animated website demos.
+                Start by uploading your image or video (ie. screenshot, screen recording etc). We support all common image and video formats to help you create beautiful mockup ads and animated website demos.
               </p>
               <div className="inline-flex items-center space-x-3 text-[#bdc2c9] hover:text-[#e7dfd6] transition-colors cursor-pointer group">
                 <Upload className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -50,7 +50,7 @@ export default function HowItWorks() {
                 Select Animation Style
               </h3>
               <p className="text-[#86868b] text-lg sm:text-xl max-w-xl">
-                Choose from our collection of professional animation styles. Whether you're creating mockup ads, product videos, or animated website demos, we have the perfect style to make your content stand out.
+                Choose from collection of professional animation styles. Whether you're creating mockup ads, product videos, or animated website demos, we have the perfect style to make your content stand out.
               </p>
               <div className="inline-flex items-center space-x-3 text-[#bdc2c9] hover:text-[#e7dfd6] transition-colors cursor-pointer group">
                 <Palette className="w-5 h-5 group-hover:scale-110 transition-transform" />

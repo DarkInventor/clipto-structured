@@ -65,7 +65,7 @@ export default function Hero() {
         </motion.div>
 
         <div className="relative z-10 text-center pb-10">
-          <h1 className="text-[2em] sm:text-[2.5em] md:text-[3em] font-semibold leading-[1.0625] tracking-[-0.009em] text-[#c8c2bd]">
+          <h1 className="text-[2em] sm:text-[2.5em] md:text-[4em] font-semibold leading-[1.0625] tracking-[-0.009em] text-[#c8c2bd]">
             Create Beautiful Animations
             <br />
             <motion.span
@@ -75,7 +75,7 @@ export default function Hero() {
               transition={{ duration: 1, ease: "easeOut" }}
             >
               <span className="relative z-10 bg-gradient-to-b from-[#000000] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]">
-             From Screenshots & Recordings  
+              In Seconds
               </span>
               <motion.span
                 className="absolute inset-0 bg-gradient-to-b from-[#dfe5ee] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]"
@@ -84,11 +84,11 @@ export default function Hero() {
                 transition={{ duration: 1, ease: "easeOut", delay: 0.24 }}
                 aria-hidden="true"
               >
-                From Screenshots & Recordings  
+                In Seconds
               </motion.span>
             </motion.span>
             <br />
-            In Seconds
+            {/* In Seconds */}
           </h1>
           <Button
             variant="outline"
@@ -100,8 +100,8 @@ export default function Hero() {
           </Button>
           {/* <p className="pt-2 text-sm text-[#86868b] font-normal">No Credit Card Required</p>   */}
           <p className="absolute left-0 right-0 mx-auto mt-[8em] sm:mt-[10em] md:mt-[12em] max-w-[28em] bg-gradient-to-b from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent text-sm sm:text-base md:text-lg">
-            Effortlessly create{" "}
-             <span className="font-extrabold text-[#e7dfd6]">mockup ads</span>, <span className="font-extrabold text-[#e7dfd6]">product videos</span> and <span className="font-extrabold text-[#e7dfd6]">animated website demos</span>. Save time, money, and effort — No Design Skils Required.
+            Produce high impact{" "}
+             <span className="font-extrabold text-[#e7dfd6]">mockup ads</span>, <span className="font-extrabold text-[#e7dfd6]">social media posts</span>, <span className="font-extrabold text-[#e7dfd6]">product videos</span>, <span className="font-extrabold text-[#e7dfd6]">animated website demos</span>. Engage more audience — No Design Skils Required.
           </p>
         </div>
       </div>

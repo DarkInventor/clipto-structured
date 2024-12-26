@@ -67,8 +67,8 @@ export default function CTASection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              Create stunning video ads and website demos in minutes. No design skills needed - just upload your screenshots and let us{' '}
-              <span className="relative inline-block font-extrabold text-[#e7dfd6]">handle the magic.</span>
+              Create stunning video ads, social media posts and product demos in seconds. {' '}
+              <span className="relative inline-block font-extrabold text-[#e7dfd6]">No design skills needed.</span>
             </motion.p>
             <motion.div 
               className="mx-auto max-w-[65%]  lg:max-w-[25%] flex justify-center pt-24 flex flex-col w-auto"

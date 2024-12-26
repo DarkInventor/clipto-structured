@@ -12,7 +12,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center">
               <span className="text-[#c8c2bd] font-bold lg:text-xl text-[1em]">Animator Studio</span>
             </Link>
-            <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd] max-w-[xl]">Create Beautiful Animations From Screenshots & Recordings In Seconds</p>
+            <p className="mt-2 lg:text-md text-[1em] text-[#c8c2bd] max-w-[xl]">Create Beautiful Animations In Seconds</p>
           </div>
 
           {/* Links Sections */}
