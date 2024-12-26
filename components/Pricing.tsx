@@ -179,7 +179,8 @@ export default function PricingComponent() {
         'Priority support',
         'Access to all future updates',
       ],
-      stripePriceId: isAnnual ? 'price_1QZWxoAPpzV89AesknWtDcjG' : 'price_1QZWxoAPpzV89Aes3dfetSkp',
+      annualPrice: 14 * 12,
+      stripePriceId: isAnnual ? 'price_1QaAi9APpzV89AesBfUWkLkb' : 'price_1QaAl4APpzV89AesypPFchfT',
     },
     {
       name: 'Creator',
@@ -192,7 +193,8 @@ export default function PricingComponent() {
         'Access to all future updates'
       ],
       highlighted: true,
-      stripePriceId: isAnnual ? 'price_1QZWxoAPpzV89AesHXU2bzsg' : 'price_1QZWxoAPpzV89AesqQ8vCj5d',
+      annualPrice: 28 * 12,
+      stripePriceId: isAnnual ? 'price_1QaAgvAPpzV89AesQNamEAAE' : 'price_1QaAlkAPpzV89AeslijAAfJJ',
     },
     {
       name: 'Pro Plan',
@@ -204,7 +206,8 @@ export default function PricingComponent() {
         'Unlimited projects',
         'Early Access to all future updates',
       ],
-      stripePriceId: isAnnual ? 'price_1QZWxoAPpzV89Aeseqxgrks6' : 'price_1QZWxoAPpzV89Aesf0pp2MDH',
+      annualPrice: 62 * 12,
+      stripePriceId: isAnnual ? 'price_1QZWxoAPpzV89Aeseqxgrks6' : 'price_1QaAmYAPpzV89Aes5KZPZlPA',
     },
   ]
 
@@ -287,16 +290,28 @@ export default function PricingComponent() {
                 <p className="mt-4 text-5xl font-bold">
                   ${plan.price}
                   <span className="text-xl font-normal text-[#86868b]">/month</span>
+                  
                 </p>
+                {isAnnual && plan.annualPrice && (
+                         <>
+                         <span className="block h-5 text-sm font-semibold text-gray-500 mt-4">${plan.annualPrice} billed annually </span>
+                         </>
+                         )}
                 <Button 
-                  className="mt-6 w-full bg-white text-black hover:bg-[#86868b]"
+                  className="mt-4 w-full bg-white text-black hover:bg-[#86868b]"
                   onClick={() => handleSubscribe(plan.name, plan.stripePriceId)}
                 >
                   Subscribe
+                  
                 </Button>
+                
+              
+           
+            
+               
                 <ul className="mt-8 space-y-4">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center">
+                    <li key={feature} className="flex items-center">                      
                       <Check className="mr-3 h-5 w-5 text-green-500" />
                       <span className="text-sm">{feature}</span>
                     </li>
