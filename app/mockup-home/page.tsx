@@ -221,9 +221,9 @@ export default function App() {
   const { projects, saveProject, loading: projectsLoading } = useProjects()
   // @ts-ignore
   const [selectedTemplate, setSelectedTemplate] = useState<Template>({
-    title: 'Angled Presentation',
+    title: 'Quick Teaser',
     duration: '00:05',
-    effect: 'angled'
+    effect: 'quickTeaser'
   })
   const [selectedAspectRatio, setSelectedAspectRatio] = useState(aspectRatios[0])
   const [selectedDuration, setSelectedDuration] = useState(durationOptions[0].value)
