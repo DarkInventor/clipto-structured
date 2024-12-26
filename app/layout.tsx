@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "Animator Studio",
     images: [
       {
-        url: "https://animatorstudio.com/og-image.png",
+        url: "https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/og-image.png",
         width: 1200,
         height: 630,
         alt: "Animator Studio",        
