@@ -39,7 +39,7 @@ export default function CTASection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              Turn Your {' '}
+              {/* Create{' '} */}
               <motion.span
                 className="relative inline-block"
                 initial={{ scale: 1 }}
@@ -47,7 +47,7 @@ export default function CTASection() {
                 transition={{ duration: 1, ease: 'easeOut' }}
               >
                 <span className="relative z-10 bg-gradient-to-b from-[#dfe5ee] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]">
-                   &nbsp;Boring Screenshots & Recordings
+           Create Beautiful Animations In Seconds
                 </span>
                 <motion.span 
                   className="absolute inset-0 bg-gradient-to-b from-[#dfe5ee] to-[#fffaf6] bg-clip-text text-transparent filter-[url(#glow-4)]"
@@ -56,10 +56,11 @@ export default function CTASection() {
                   transition={{ duration: 1, ease: 'easeOut', delay: 0.24 }}
                   aria-hidden="true"
                 >
-                 &nbsp;Boring Screenshots & Recordings 
+                 Create Beautiful Animations In Seconds
+                
                 </motion.span>{' '}
               </motion.span>{' '}
-                  into Animated Videos within Seconds
+              {/* Beautiful Animations In SecondsIn Seconds */}
             </motion.h2>
             <motion.p 
               className="absolute left-0 right-0 mx-auto mt-[8em] sm:mt-[10em] md:mt-[12em] max-w-[28em] bg-gradient-to-b from-[#86868b] to-[#bdc2c9] bg-clip-text text-center font-semibold text-transparent text-sm sm:text-base md:text-lg"
@@ -67,11 +68,11 @@ export default function CTASection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              Create stunning video ads, social media posts and product demos in seconds. {' '}
+              Produce high impact animations, videos, and social media posts in seconds. {' '}
               <span className="relative inline-block font-extrabold text-[#e7dfd6]">No design skills needed.</span>
             </motion.p>
             <motion.div 
-              className="mx-auto max-w-[65%]  lg:max-w-[25%] flex justify-center pt-24 flex flex-col w-auto"
+              className="mx-auto max-w-[65%]  lg:max-w-[25%] flex justify-center pt-[68px] flex flex-col w-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}
