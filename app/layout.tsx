@@ -17,6 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.animator.studio/"), 
   title: "Animator Studio",
   description: "Create Beautiful Animations In Seconds",
   keywords: ["animation", "studio", "design", "motion graphics", "creative tools", "animator", "animated video", "screen studio"],
@@ -42,6 +43,7 @@ export const metadata: Metadata = {
         url: "https://animatorstudio.com/og-image.png",
         width: 1200,
         height: 630,
+        alt: "Animator Studio",        
       },
     ],
     locale: "en_US",
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
     title: "Animator Studio",
     description: "Create Beautiful Animations In Seconds",
     creator: "@kathanmehtaa",
-    images: ["https://animatorstudio.com/og-image.png"],
+    images: ["https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/og-image.png"],
   },
 };
 
