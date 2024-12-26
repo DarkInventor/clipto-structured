@@ -45,10 +45,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Animator Studio",
-    description: "Create Beautiful Animations In Seconds",
-    creator: "@kathanmehtaa",
-    images: ["https://pub-a49ce427d0254ca983d7c77bb50b7846.r2.dev/og-image.png"],
   },
 };
 
