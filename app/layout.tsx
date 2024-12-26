@@ -21,16 +21,21 @@ export const metadata: Metadata = {
   title: "Animator Studio",
   description: "Create Beautiful Animations In Seconds",
   keywords: ["animation", "studio", "design", "motion graphics", "creative tools", "animator", "animated video", "screen studio"],
+  // icons: {
+  //   icon: [
+  //     { url: '/favicon.ico' },
+  //     { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+  //     { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+  //     { url: '/icon.svg', type: 'image/svg+xml' },
+  //   ],
+  //   apple: [
+  //     { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+  //   ],
+  // },
   icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    icon: "/favicon-32x32.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
   manifest: '/manifest.json',
   openGraph: {
