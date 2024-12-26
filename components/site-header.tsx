@@ -33,17 +33,42 @@ export function SiteHeader() {
                 <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] ">
                   <li className="row-span-3 ">
                     <NavigationMenuLink asChild >
-                      <a
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[#cfcfcf] to-[#000000] p-6 no-underline outline-none focus:shadow-md"
-                        href="/#"
-                      >
-                        <div className="mb-2 mt-4 text-lg font-medium text-[#fffaf6]">
-                          Animator Studio
-                        </div>
-                        <p className="text-sm leading-tight text-[#e7dfd6]">
-                          Transform Screenshots Into Stunning Video Ads In Seconds
-                        </p>
-                      </a>
+                    <a
+      className="group relative flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-[#3a3a3a] to-[#1a1a1a] p-6 no-underline outline-none focus:shadow-md overflow-hidden"
+      href="/#"
+    >
+      {/* Golden SVG Background */}
+      <div className="absolute inset-0 opacity-20 transition-opacity duration-300 group-hover:opacity-30">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="smallGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,215,0,0.3)" strokeWidth="0.5"/>
+            </pattern>
+            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+              <rect width="50" height="50" fill="url(#smallGrid)"/>
+              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,215,0,0.5)" strokeWidth="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+
+      {/* Animated golden circles */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full bg-gradient-to-br from-yellow-200 to-yellow-500 opacity-20 blur-xl animate-pulse"></div>
+        <div className="absolute -right-4 -bottom-4 h-32 w-32 rounded-full bg-gradient-to-tl from-yellow-200 to-yellow-500 opacity-20 blur-xl animate-pulse"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="mb-2 mt-4 text-lg font-medium text-[#e7dfd6]">
+          Animator Studio
+        </div>
+        <p className="text-sm leading-tight text-[#bdc2c9]">
+        Create Beautiful Animations In Seconds
+        </p>
+      </div>
+    </a>
                     </NavigationMenuLink>
                   </li>
                   <ListItem href="/#" title="Introduction">
