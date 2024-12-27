@@ -815,7 +815,17 @@ export default function RegisterPage() {
                 <Button type="submit" variant="outline" size="lg"   className="w-full text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] border-none p-5">
                   Create Account <ArrowRightIcon className="ml-2" />
                 </Button>
+                <div className="text-center text-sm">
+            
+            <p className="mt-2 text-[#86868b]">
+              Already have an account?{" "}
+             <a href="/login" className="text-[#c8c2bd] hover:text-white">
+             Login
+            </a>
+          </p>
+         </div>
               </form>
+              
             </div>
           </div>
         </div>

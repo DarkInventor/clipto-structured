@@ -320,7 +320,17 @@ function LoginContent() {
         <Button type="submit" variant="outline" size="lg" className="w-full text-black hover:from-[#bdc2c9] hover:to-[#e7dfd6] bg-gradient-to-r from-[#86868b] to-[#bdc2c9] border-none p-5">
           Login <ArrowRightIcon className="ml-2" />
         </Button>
+        <div className="text-center text-sm">
+            
+            <p className="mt-2 text-[#86868b]">
+              Don't have an account?{" "}
+             <a href="/register" className="text-[#c8c2bd] hover:text-white">
+             Sign up
+            </a>
+          </p>
+         </div>
       </form>
+    
     </div>
   );
 }
@@ -357,6 +367,7 @@ export default function LoginPage() {
           </Suspense>
         </div>
       </div>
+           
     </>
   );
 }
