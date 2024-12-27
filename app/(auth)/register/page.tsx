@@ -629,6 +629,10 @@ export default function RegisterPage() {
         permissions: [],
         credits: 20,
         hasReceivedInitialCredits: true,
+        subscription: {
+          plan: "free",
+          renewalPeriod: "monthly" // even though it's free, we can track it monthly
+        }
       });
       console.log("New user created with 20 credits");
     } else if (!userDoc.exists() && !emailSnapshot.empty) {
