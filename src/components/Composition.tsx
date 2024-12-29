@@ -1,60 +1,289 @@
+// import React from 'react'
+// import { AbsoluteFill, Sequence, useVideoConfig, useCurrentFrame } from 'remotion'
+// import { AngledPresentation } from './templates/AngledPresentation'
+// import { QuickTeaser } from './templates/QuickTeaser'
+// import { Laptop } from './templates/Laptop'
+// import { DynamicShowcase } from './templates/DynamicShowcase'
+
+// interface Scene {
+//   duration: number;
+//   zoom: number;
+//   rotation: number;
+//   text: string;
+// }
+
+// interface CompositionProps {
+//   scenes?: Scene[];
+//   fileUrl?: string;
+//   isVideo?: boolean;
+//   presentationType?: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase';
+//   audioVolume?: number;
+//   adTitle?: string;
+//   adDescription?: string;
+//   backgroundColor: string;
+//   backgroundImage: string | null;
+//   durationInSeconds: number;
+// }
+
+// const MyComposition: React.FC<CompositionProps> = ({
+//   scenes = [],
+//   fileUrl = '',
+//   isVideo = false,
+//   presentationType = 'angled',
+//   audioVolume = 1,
+//   adTitle = '',
+//   adDescription = '',
+//   backgroundColor = '#ffffff',
+//   backgroundImage,
+//   durationInSeconds,
+// }) => {
+//   const { fps } = useVideoConfig();
+//   const frame = useCurrentFrame();
+
+//   const totalFrames = durationInSeconds * fps;
+//   const loopDuration = 5 * fps; // 5 seconds loop
+//   const loopedFrame = frame % loopDuration;
+//   const loopCount = Math.floor(frame / loopDuration);
+
+//   const renderEffect = (scene: { zoom: number; rotation: number }) => {
+//     const props = {
+//       src: fileUrl,
+//       isVideo,
+//       volume: audioVolume,
+//       title: adTitle,
+//       subtitle: adDescription,
+//       zoom: scene.zoom,
+//       rotation: scene.rotation,
+//       backgroundColor,
+//       durationInFrames: loopDuration,
+//       frame: loopedFrame,
+//       loopCount,
+//     };
+
+//     switch (presentationType) {
+//       case 'angled':
+//         return <AngledPresentation {...props} />;
+//       case 'quickTeaser':
+//         return <QuickTeaser {...props} />;
+//       case 'laptop':
+//         return <Laptop {...props} />;
+//       case 'dynamicShowcase':
+//         // @ts-ignore
+//         return <DynamicShowcase {...props} />;
+//       default:
+//         return null;
+//     }
+//   };
+
+//   return (
+//     <div
+//       style={{
+//         width: '100%',
+//         height: '100%',
+//         backgroundColor,
+//         backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+//         backgroundSize: 'cover',
+//         backgroundPosition: 'center',
+//       }}
+//     >
+//       <AbsoluteFill style={{ backgroundColor }}>
+//         {scenes.length > 0 ? (
+//           scenes.map((scene, index) => (
+//             <Sequence key={index} durationInFrames={scene.duration * fps} from={index * scene.duration * fps}>
+//               {renderEffect(scene)}
+//             </Sequence>
+//           ))
+//         ) : (
+//           <Sequence durationInFrames={totalFrames}>
+//             {renderEffect({ zoom: 100, rotation: 0 })}
+//           </Sequence>
+//         )}
+//       </AbsoluteFill>
+//     </div>
+//   )
+// }
+
+// export default MyComposition;
+
+
+
+
+
+
+
+
+// import React from 'react'
+// import { AbsoluteFill, Sequence, useVideoConfig } from 'remotion'
+// import { AngledPresentation } from './templates/AngledPresentation'
+// import { QuickTeaser } from './templates/QuickTeaser'
+// import { Laptop } from './templates/Laptop'
+// import { DynamicShowcase } from './templates/DynamicShowcase'
+
+// interface Scene {
+//   duration: number;
+//   zoom: number;
+//   rotation: number;
+//   text: string;
+// }
+
+// interface CompositionProps {
+//   scenes?: Scene[];
+//   fileUrl?: string;
+//   isVideo?: boolean;
+//   presentationType?: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase';
+//   audioVolume?: number;
+//   adTitle?: string;
+//   adDescription?: string;
+//   backgroundColor: string;
+//   backgroundImage: string | null;
+//   durationInSeconds: number;
+// }
+
+// const MyComposition: React.FC<CompositionProps> = ({
+//   scenes = [],
+//   fileUrl = '',
+//   isVideo = false,
+//   presentationType = 'angled',
+//   audioVolume = 1,
+//   adTitle = '',
+//   adDescription = '',
+//   backgroundColor = '#ffffff',
+//   backgroundImage,
+//   durationInSeconds,
+// }) => {
+//   const { fps } = useVideoConfig();
+
+//   const totalFrames = durationInSeconds * fps;
+
+//   const renderEffect = (scene: { zoom: number; rotation: number }, sceneDuration: number) => {
+//     const props = {
+//       src: fileUrl,
+//       isVideo,
+//       volume: audioVolume,
+//       title: adTitle,
+//       subtitle: adDescription,
+//       zoom: scene.zoom,
+//       rotation: scene.rotation,
+//       backgroundColor,
+//       durationInFrames: sceneDuration,
+//     };
+
+//     switch (presentationType) {
+//       case 'angled':
+//         return <AngledPresentation {...props} />;
+//       case 'quickTeaser':
+//         // @ts-ignore
+//         return <QuickTeaser {...props} />;
+//       case 'laptop':
+//         return <Laptop {...props} />;
+//       case 'dynamicShowcase':
+//         // @ts-ignore
+//         return <DynamicShowcase {...props} />;
+//       default:
+//         return null;
+//     }
+//   };
+
+//   return (
+//     <div
+//       style={{
+//         width: '100%',
+//         height: '100%',
+//         backgroundColor,
+//         backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+//         backgroundSize: 'cover',
+//         backgroundPosition: 'center',
+//       }}
+//     >
+//       <AbsoluteFill style={{ backgroundColor }}>
+//         {scenes.length > 0 ? (
+//           scenes.map((scene, index) => (
+//             <Sequence key={index} durationInFrames={scene.duration * fps} from={index * scene.duration * fps}>
+//               {renderEffect(scene, scene.duration * fps)}
+//             </Sequence>
+//           ))
+//         ) : (
+//           <Sequence durationInFrames={totalFrames}>
+//             {renderEffect({ zoom: 100, rotation: 0 }, totalFrames)}
+//           </Sequence>
+//         )}
+//       </AbsoluteFill>
+//     </div>
+//   )
+// }
+
+// export default MyComposition;
+
+
+
+
+// MyComposition.tsx
 import React from 'react'
-import { AbsoluteFill, Sequence } from 'remotion'
+import { AbsoluteFill, Sequence, useVideoConfig } from 'remotion'
 import { AngledPresentation } from './templates/AngledPresentation'
 import { QuickTeaser } from './templates/QuickTeaser'
 import { Laptop } from './templates/Laptop'
 import { DynamicShowcase } from './templates/DynamicShowcase'
 
+interface Scene {
+  duration: number;
+  zoom: number;
+  rotation: number;
+  text: string;
+}
+
 interface CompositionProps {
-  scenes?: Array<{
-    duration: number;
-    zoom: number;
-    rotation: number;
-    text: string;
-  }>;
-  src?: string;  // Changed from fileUrl to src
+  scenes?: Scene[];
+  fileUrl?: string;
   isVideo?: boolean;
   presentationType?: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase';
   audioVolume?: number;
   adTitle?: string;
   adDescription?: string;
-  backgroundColor?: string;
+  backgroundColor: string;
+  backgroundImage: string | null;
+  durationInSeconds: number;
 }
 
 const MyComposition: React.FC<CompositionProps> = ({
   scenes = [],
-  src = '',  // Changed from fileUrl to src
+  fileUrl = '',
   isVideo = false,
   presentationType = 'angled',
   audioVolume = 1,
   adTitle = '',
   adDescription = '',
-  backgroundColor = '#ffffff', 
+  backgroundColor = '#ffffff',
+  backgroundImage,
+  durationInSeconds,
 }) => {
-  const renderEffect = (scene: { zoom: number; rotation: number }) => {
+  const { fps } = useVideoConfig();
+  const totalFrames = durationInSeconds * fps;
+
+  const renderEffect = (scene: { zoom: number; rotation: number }, sceneDuration: number, startFrame: number = 0) => {
     const props = {
-      src,  // Changed from media to src
+      media: fileUrl,
       isVideo,
       volume: audioVolume,
       title: adTitle,
       subtitle: adDescription,
       zoom: scene.zoom,
       rotation: scene.rotation,
-      backgroundColor, 
+      backgroundColor,
+      durationInFrames: sceneDuration,
+      startFrom: startFrame,
     };
 
     switch (presentationType) {
       case 'angled':
-         // @ts-ignore
+        // @ts-ignore
         return <AngledPresentation {...props} />;
-      case 'quickTeaser':
-         // @ts-ignore
-        return <QuickTeaser {...props} />;
       case 'laptop':
-         // @ts-ignore
         return <Laptop {...props} />;
+      case 'quickTeaser':
+        // @ts-ignore
+        return <QuickTeaser {...props} />;
       case 'dynamicShowcase':
-         // @ts-ignore
         return <DynamicShowcase {...props} />;
       default:
         return null;
@@ -62,20 +291,38 @@ const MyComposition: React.FC<CompositionProps> = ({
   };
 
   return (
-    <AbsoluteFill style={{ backgroundColor }}>
-      {scenes.length > 0 ? (
-        scenes.map((scene, index) => (
-          <Sequence key={index} durationInFrames={scene.duration * 30} from={index * scene.duration * 30}>
-            {renderEffect(scene)}
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor,
+        backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <AbsoluteFill style={{ backgroundColor }}>
+        {scenes.length > 0 ? (
+          scenes.map((scene, index) => {
+            const startFrame = index * scene.duration * fps;
+            return (
+              <Sequence 
+                key={index} 
+                durationInFrames={scene.duration * fps} 
+                from={startFrame}
+              >
+                {renderEffect(scene, scene.duration * fps, startFrame)}
+              </Sequence>
+            );
+          })
+        ) : (
+          <Sequence durationInFrames={totalFrames}>
+            {renderEffect({ zoom: 100, rotation: 0 }, totalFrames, 0)}
           </Sequence>
-        ))
-      ) : (
-        <Sequence durationInFrames={300}>
-          {renderEffect({ zoom: 100, rotation: 0 })}
-        </Sequence>
-      )}
-    </AbsoluteFill>
-  )
-}
+        )}
+      </AbsoluteFill>
+    </div>
+  );
+};
 
 export default MyComposition;

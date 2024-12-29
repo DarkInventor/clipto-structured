@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, Img, Video } from 'remotion'
+import { AbsoluteFill, interpolate, Img, Video } from 'remotion'
 
 interface AngledPresentationProps {
   media: string;
@@ -9,8 +9,10 @@ interface AngledPresentationProps {
   subtitle: string;
   zoom: number;
   rotation: number;
-  duration: number;
   backgroundColor: string;
+  durationInFrames: number;
+  frame: number;
+  loopCount: number;
 }
 
 export const AngledPresentation: React.FC<AngledPresentationProps> = ({
@@ -21,35 +23,30 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
   subtitle,
   zoom,
   rotation,
-  duration,
-  backgroundColor
+  backgroundColor,
+  durationInFrames,
+  frame,
+  loopCount,
 }) => {
-  const frame = useCurrentFrame()
-  const { durationInFrames, fps } = useVideoConfig()
+  const baseDuration = 5 * 60; // 5 seconds at 60fps
+  const loopedFrame = frame % baseDuration;
   
   const keyframes = useMemo(() => {
-    // Ensure we have a valid duration
-    const safeDuration = Math.max(1, duration || 10)
-    const scaleFactor = safeDuration / 10
-    
-    // Ensure all frame numbers are integers and scale based on total duration
     return {
       0: { z: 330, rotateY: -20, rotateX: 15, rotate: -7, scale: 1 },
-      [Math.floor(30 * scaleFactor)]: { z: 0, rotateY: 0, rotateX: 0, rotate: 0, scale: 1.2 },
-      [Math.floor(80 * scaleFactor)]: { z: 330, rotateY: 20, rotateX: 15, rotate: 7, scale: 1 },
-      [Math.floor(150 * scaleFactor)]: { z: 0, rotateY: 0, rotateX: 0, rotate: 0, scale: 1.2 },
+      30: { z: 0, rotateY: 0, rotateX: 0, rotate: 0, scale: 1.2 },
+      80: { z: 330, rotateY: 20, rotateX: 15, rotate: 7, scale: 1 },
+      150: { z: 0, rotateY: 0, rotateX: 0, rotate: 0, scale: 1.2 },
     }
-  }, [duration])
+  }, [])
 
   const currentFromKeyframe = useMemo(() => {
     const keyframeValues = Object.values(keyframes)
     const keyframeFrames = Object.keys(keyframes).map(Number)
     
-    // Find the current keyframe index
-    const currentIndex = keyframeFrames.findIndex(f => f > frame % durationInFrames) - 1
+    const currentIndex = keyframeFrames.findIndex(f => f > loopedFrame) - 1
     const safeIndex = Math.max(0, currentIndex)
     
-    // If we're at the last keyframe, return it
     if (safeIndex === keyframeFrames.length - 1) {
       return keyframeValues[safeIndex]
     }
@@ -60,20 +57,17 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
     const nextKeyframe = keyframeValues[safeIndex + 1]
     
     return {
-      z: interpolate(frame % durationInFrames, [currentFrame, nextFrame], [currentKeyframe.z, nextKeyframe.z]),
-      rotateY: interpolate(frame % durationInFrames, [currentFrame, nextFrame], [currentKeyframe.rotateY, nextKeyframe.rotateY]),
-      rotateX: interpolate(frame % durationInFrames, [currentFrame, nextFrame], [currentKeyframe.rotateX, nextKeyframe.rotateX]),
-      rotate: interpolate(frame % durationInFrames, [currentFrame, nextFrame], [currentKeyframe.rotate, nextKeyframe.rotate]),
-      scale: interpolate(frame % durationInFrames, [currentFrame, nextFrame], [currentKeyframe.scale, nextKeyframe.scale]),
+      z: interpolate(loopedFrame, [currentFrame, nextFrame], [currentKeyframe.z, nextKeyframe.z]),
+      rotateY: interpolate(loopedFrame, [currentFrame, nextFrame], [currentKeyframe.rotateY, nextKeyframe.rotateY]),
+      rotateX: interpolate(loopedFrame, [currentFrame, nextFrame], [currentKeyframe.rotateX, nextKeyframe.rotateX]),
+      rotate: interpolate(loopedFrame, [currentFrame, nextFrame], [currentKeyframe.rotate, nextKeyframe.rotate]),
+      scale: interpolate(loopedFrame, [currentFrame, nextFrame], [currentKeyframe.scale, nextKeyframe.scale]),
     }
-  }, [frame, durationInFrames, keyframes])
+  }, [loopedFrame, keyframes])
 
-  // Rest of the component remains the same...
   return (
-    // <AbsoluteFill style={{ backgroundColor: backgroundColor || "#fff", display: "flex", justifyContent: "center", alignItems: "center" }}>
     <AbsoluteFill style={{ 
       backgroundColor, 
-      // backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       display: "flex", 
@@ -133,3 +127,194 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
   )
 }
 
+
+
+
+
+
+
+// import React, { useMemo } from 'react'
+// import { AbsoluteFill, interpolate, Img, Video, useCurrentFrame, spring } from 'remotion'
+
+// interface AngledPresentationProps {
+//   media: string;
+//   isVideo: boolean;
+//   volume: number;
+//   title: string;
+//   subtitle: string;
+//   zoom: number;
+//   rotation: number;
+//   backgroundColor: string;
+//   durationInFrames: number;
+// }
+
+// export const AngledPresentation: React.FC<AngledPresentationProps> = ({
+//   media,
+//   isVideo,
+//   volume,
+//   title,
+//   subtitle,
+//   zoom,
+//   rotation,
+//   backgroundColor,
+//   durationInFrames,
+// }) => {
+//   const frame = useCurrentFrame();
+//   const fps = 60;
+
+//   const sequence = useMemo(() => [
+//     { start: 0, end: 60, name: 'intro' },
+//     { start: 60, end: 120, name: 'zoom' },
+//     { start: 120, end: 180, name: 'angle1' },
+//     { start: 180, end: 240, name: 'angle2' },
+//     { start: 240, end: 300, name: 'finale' },
+//   ], []);
+
+//   const getCurrentSequence = () => {
+//     const loopedFrame = frame % 300;
+//     return sequence.find(seq => loopedFrame >= seq.start && loopedFrame < seq.end) || sequence[0];
+//   };
+
+//   const { name, start } = getCurrentSequence();
+//   const sequenceFrame = frame % 300 - start;
+
+//   const scale = spring({
+//     fps,
+//     frame: sequenceFrame,
+//     config: {
+//       damping: 100,
+//       stiffness: 200,
+//       mass: 0.5,
+//     },
+//   });
+
+//   const rotateY = spring({
+//     fps,
+//     frame: sequenceFrame,
+//     config: {
+//       damping: 100,
+//       stiffness: 200,
+//       mass: 0.5,
+//     },
+//   });
+
+//   const translateZ = spring({
+//     fps,
+//     frame: sequenceFrame,
+//     config: {
+//       damping: 100,
+//       stiffness: 200,
+//       mass: 0.5,
+//     },
+//   });
+
+//   const getTransform = () => {
+//     switch (name) {
+//       case 'intro':
+//         return `
+//           scale(${interpolate(scale, [0, 1], [0.5, 1])} )
+//           rotateY(${interpolate(rotateY, [0, 1], [45, 0])}deg)
+//           translateZ(${interpolate(translateZ, [0, 1], [-500, 0])}px)
+//         `;
+//       case 'zoom':
+//         return `
+//           scale(${interpolate(scale, [0, 1], [1, 1.5])} )
+//           rotateY(${rotation}deg)
+//         `;
+//       case 'angle1':
+//         return `
+//           scale(${1.2 * (zoom / 100)})
+//           rotateY(${interpolate(rotateY, [0, 1], [0, 30])}deg)
+//           rotateX(${interpolate(rotateY, [0, 1], [0, -15])}deg)
+//         `;
+//       case 'angle2':
+//         return `
+//           scale(${1.2 * (zoom / 100)})
+//           rotateY(${interpolate(rotateY, [0, 1], [30, -30])}deg)
+//           rotateX(${interpolate(rotateY, [0, 1], [-15, 15])}deg)
+//         `;
+//       case 'finale':
+//         return `
+//           scale(${interpolate(scale, [0, 1], [1.2, 1])} )
+//           rotateY(${interpolate(rotateY, [0, 1], [-30, 0])}deg)
+//           translateZ(${interpolate(translateZ, [0, 1], [0, 200])}px)
+//         `;
+//       default:
+//         return '';
+//     }
+//   };
+
+//   return (
+//     <AbsoluteFill 
+//       style={{ 
+//         backgroundColor, 
+//         display: "flex", 
+//         justifyContent: "center", 
+//         alignItems: "center",
+//         perspective: "1200px",
+//       }}
+//     >
+//       <div 
+//         style={{
+//           width: "80%",
+//           height: "80%",
+//           position: "relative",
+//           transformStyle: "preserve-3d",
+//           transform: getTransform(),
+//           transition: "transform 0.5s ease-in-out",
+//         }}
+//       >
+//         <div 
+//           style={{
+//             position: "absolute",
+//             width: "100%",
+//             height: "100%",
+//             backgroundColor: "#fff",
+//             borderRadius: 20,
+//             overflow: "hidden",
+//             boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+//           }}
+//         >
+//           {isVideo ? (
+//             <Video 
+//               src={media} 
+//               style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+//               volume={volume} 
+//             />
+//           ) : (
+//             <Img 
+//               src={media} 
+//               style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+//             />
+//           )}
+//         </div>
+//         <div 
+//           style={{
+//             position: "absolute",
+//             top: "100%",
+//             left: 0,
+//             right: 0,
+//             height: "30%",
+//             background: "linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)",
+//             transform: "rotateX(90deg) translateY(-50%)",
+//             opacity: 0.6,
+//           }}
+//         />
+//       </div>
+//       <div 
+//         style={{
+//           position: 'absolute',
+//           bottom: '10%',
+//           left: '10%',
+//           right: '10%',
+//           textAlign: 'center',
+//           color: 'white',
+//           textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+//         }}
+//       >
+//         <h1 style={{ fontSize: '3em', marginBottom: '0.5em' }}>{title}</h1>
+//         <h2 style={{ fontSize: '1.5em' }}>{subtitle}</h2>
+//       </div>
+//     </AbsoluteFill>
+//   );
+// };
