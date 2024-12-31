@@ -105,228 +105,19 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
 
 
 
-// import React from 'react'
-// import { AbsoluteFill, useVideoConfig, useCurrentFrame, interpolate, spring } from 'remotion'
-
-// interface AngledPresentationProps {
-//   src: string;
-//   isVideo: boolean;
-//   volume: number;
-//   title: string;
-//   subtitle: string;
-//   zoom: number;
-//   rotation: number;
-//   backgroundColor: string;
-//   durationInFrames: number;
-// }
-
-// export const AngledPresentation: React.FC<AngledPresentationProps> = ({
-//   src,
-//   isVideo,
-//   volume,
-//   title,
-//   subtitle,
-//   zoom,
-//   rotation,
-//   backgroundColor,
-//   durationInFrames,
-// }) => {
-//   const frame = useCurrentFrame();
-//   const { fps } = useVideoConfig();
-
-//   const progress = frame / durationInFrames;
-
-//   const scale = spring({
-//     fps,
-//     frame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
-//   });
-
-//   const rotateY = spring({
-//     fps,
-//     frame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
-//   });
-
-//   const translateZ = spring({
-//     fps,
-//     frame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
-//   });
-
-//   const scaleValue = interpolate(scale, [0, 1], [1, 1.5]);
-//   const rotateYValue = interpolate(rotateY, [0, 0.25, 0.75, 1], [0, 30, -30, 0]);
-//   const translateZValue = interpolate(translateZ, [0, 0.5, 1], [0, 200, 0]);
-
-//   const MediaComponent = isVideo ? 'video' : 'img';
-
-//   return (
-//     <AbsoluteFill style={{ backgroundColor, perspective: '1200px' }}>
-//       <div style={{
-//         position: 'absolute',
-//         top: '50%',
-//         left: '50%',
-//         width: '80%',
-//         height: '80%',
-//         transform: `
-//           translate(-50%, -50%)
-//           scale(${scaleValue * (zoom / 100)})
-//           rotateY(${rotateYValue + rotation}deg)
-//           translateZ(${translateZValue}px)
-//         `,
-//         transition: 'transform 0.1s ease-out',
-//       }}>
-//         <div style={{
-//           width: '100%',
-//           height: '100%',
-//           borderRadius: '20px',
-//           overflow: 'hidden',
-//           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-//         }}>
-//           <MediaComponent 
-//             src={src} 
-//             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-//             {...(isVideo ? { muted: true, loop: true, autoPlay: true } : {})}
-//           />
-//         </div>
-//       </div>
-//       <div style={{
-//         position: 'absolute',
-//         bottom: '10%',
-//         left: '10%',
-//         right: '10%',
-//         textAlign: 'center',
-//         color: 'white',
-//         textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-//       }}>
-//         <h1 style={{ fontSize: '3em', marginBottom: '0.5em' }}>{title}</h1>
-//         <h2 style={{ fontSize: '1.5em' }}>{subtitle}</h2>
-//       </div>
-//     </AbsoluteFill>
-//   );
-// };
 
 
 
-
-
-
-
-
-// import React from 'react'
-// import { AbsoluteFill, useVideoConfig, useCurrentFrame, spring, interpolate } from 'remotion'
-
-// interface AngledPresentationProps {
-//   src: string;
-//   isVideo: boolean;
-//   volume: number;
-//   title: string;
-//   subtitle: string;
-//   zoom: number;
-//   rotation: number;
-//   backgroundColor: string;
-//   durationInFrames: number;
-// }
-
-// export const AngledPresentation: React.FC<AngledPresentationProps> = ({
-//   src,
-//   isVideo,
-//   volume,
-//   title,
-//   subtitle,
-//   zoom,
-//   rotation,
-//   backgroundColor,
-//   durationInFrames,
-// }) => {
-//   const frame = useCurrentFrame();
-//   const { fps, width, height } = useVideoConfig();
-
-//   const progress = frame / durationInFrames;
-
-//   const scale = spring({
-//     fps,
-//     frame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
-//   });
-
-//   const rotateY = spring({
-//     fps,
-//     frame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
-//   });
-
-//   const translateZ = spring({
-//     fps,
-//     frame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
-//   });
-
-//   const scaleValue = interpolate(scale, [0, 1], [0.8, 1.2]);
-//   const rotateYValue = interpolate(rotateY, [0, 0.5, 1], [-30, 30, -30]);
-//   const translateZValue = interpolate(translateZ, [0, 0.5, 1], [-200, 0, -200]);
-
-//   const MediaComponent = isVideo ? 'video' : 'img';
-
-//   return (
-//     <AbsoluteFill style={{ backgroundColor, perspective: '1200px' }}>
-//       <div style={{
-//         position: 'absolute',
-//         top: '50%',
-//         left: '50%',
-//         width: '80%',
-//         height: '80%',
-//         transform: `
-//           translate(-50%, -50%)
-//           scale(${scaleValue * (zoom / 100)})
-//           rotateY(${rotateYValue + rotation}deg)
-//           translateZ(${translateZValue}px)
-//         `,
-//       }}>
-//         <div style={{
-//           width: '100%',
-//           height: '100%',
-//           borderRadius: '20px',
-//           overflow: 'hidden',
-//           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-//         }}>
-//           <MediaComponent 
-//             src={src} 
-//             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-//             {...(isVideo ? { muted: volume === 0, volume: volume / 100, loop: true, autoPlay: true } : {})}
-//           />
-//         </div>
-//       </div>
-//       <div style={{
-//         position: 'absolute',
-//         bottom: '10%',
-//         left: '10%',
-//         right: '10%',
-//         textAlign: 'center',
-//         color: 'white',
-//         textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-//       }}>
-//         <h1 style={{ fontSize: '3em', marginBottom: '0.5em' }}>{title}</h1>
-//         <h2 style={{ fontSize: '1.5em' }}>{subtitle}</h2>
-//       </div>
-//     </AbsoluteFill>
-//   );
-// };
-
-
-
-
-
-
-
-// import React from 'react'
-// import { AbsoluteFill, useVideoConfig, useCurrentFrame, spring, interpolate } from 'remotion'
+// import React, { useMemo } from 'react';
+// import {
+//   AbsoluteFill,
+//   interpolate,
+//   Img,
+//   Video,
+//   useCurrentFrame,
+//   useVideoConfig,
+//   spring,
+// } from 'remotion';
 
 // interface AngledPresentationProps {
 //   media: string;
@@ -334,93 +125,94 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
 //   volume: number;
 //   title: string;
 //   subtitle: string;
-//   zoom: number;
-//   rotation: number;
+//   deviceColor: string;
 //   backgroundColor: string;
-//   durationInFrames: number;
-//   startFrom: number;
+//   zoom?: number;
+//   rotation?: number;
+//   durationInFrames?: number;
+//   startFrom?: number;
 // }
 
-// export const AngledPresentation: React.FC<AngledPresentationProps> = ({
+// const DeviceFrame: React.FC<{ children: React.ReactNode; deviceColor: string }> = ({ children, deviceColor }) => {
+//   return (
+//     <div style={{
+//       width: '100%',
+//       height: '100%',
+//       backgroundColor: deviceColor,
+//       borderRadius: '30px',
+//       padding: '10px',
+//       boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
+//       display: 'flex',
+//       flexDirection: 'column',
+//       overflow: 'hidden',
+//     }}>
+//         {children}
+//       </div>
+//   );
+// };
+
+// const MediaContent: React.FC<{ media: string; isVideo: boolean; volume: number }> = ({
 //   media,
 //   isVideo,
 //   volume,
-//   title,
-//   subtitle,
-//   zoom,
-//   rotation,
-//   backgroundColor,
-//   durationInFrames,
-//   startFrom,
 // }) => {
 //   const frame = useCurrentFrame();
-//   const { fps } = useVideoConfig();
+//   const { fps, durationInFrames } = useVideoConfig();
 
-//   const adjustedFrame = frame - startFrom;
-  
-//   const scale = spring({
-//     fps,
-//     frame: adjustedFrame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
+//   const scale = useMemo(() => {
+//     return spring({
+//       fps,
+//       frame,
+//       config: {
+//         damping: 100,
+//         stiffness: 200,
+//         mass: 0.5,
+//       },
+//       durationInFrames,
+//     });
+//   }, [frame, fps, durationInFrames]);
+
+//   const mediaStyle = {
+//     width: '100%',
+//     height: '100%',
+//     objectFit: 'cover' as const,
+//     transform: `scale(${scale})`,
+//   };
+
+//   return isVideo ? (
+//     <Video src={media} style={mediaStyle} volume={volume} />
+//   ) : (
+//     <Img src={media} style={mediaStyle} />
+//   );
+// };
+
+// const TitleOverlay: React.FC<{ title: string; subtitle: string }> = ({ title, subtitle }) => {
+//   const frame = useCurrentFrame();
+//   const { durationInFrames } = useVideoConfig();
+
+//   const opacity = interpolate(
+//     frame,
+//     [0, 30, durationInFrames - 30, durationInFrames],
+//     [0, 1, 1, 0],
+//     {
+//       extrapolateLeft: 'clamp',
+//       extrapolateRight: 'clamp',
+//     }
+//   );
+
+//   const titleY = interpolate(frame, [0, 30], [50, 0], {
+//     extrapolateLeft: 'clamp',
+//     extrapolateRight: 'clamp',
 //   });
 
-//   const rotateY = spring({
-//     fps,
-//     frame: adjustedFrame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
+//   const subtitleY = interpolate(frame, [15, 45], [50, 0], {
+//     extrapolateLeft: 'clamp',
+//     extrapolateRight: 'clamp',
 //   });
-
-//   const translateZ = spring({
-//     fps,
-//     frame: adjustedFrame,
-//     config: { damping: 100, stiffness: 200, mass: 0.5 },
-//     durationInFrames,
-//   });
-
-//   const scaleValue = interpolate(scale, [0, 1], [0.8, 1.2]);
-//   const rotateYValue = interpolate(rotateY, [0, 0.5, 1], [-30, 30, -30]);
-//   const translateZValue = interpolate(translateZ, [0, 0.5, 1], [-200, 0, -200]);
-
-//   const MediaComponent = isVideo ? 'video' : 'img';
 
 //   return (
-//     <AbsoluteFill style={{ backgroundColor, perspective: '1200px' }}>
-//       <div style={{
-//         position: 'absolute',
-//         top: '50%',
-//         left: '50%',
-//         width: '80%',
-//         height: '80%',
-//         transform: `
-//           translate(-50%, -50%)
-//           scale(${scaleValue * (zoom / 100)})
-//           rotateY(${rotateYValue + rotation}deg)
-//           translateZ(${translateZValue}px)
-//         `,
-//       }}>
-//         <div style={{
-//           width: '100%',
-//           height: '100%',
-//           borderRadius: '20px',
-//           overflow: 'hidden',
-//           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-//         }}>
-//           <MediaComponent 
-//             src={media}
-//             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-//             {...(isVideo ? {
-//               muted: volume === 0,
-//               volume: volume / 100,
-//               loop: true,
-//               autoPlay: true,
-//               playsInline: true,
-//             } : {})}
-//           />
-//         </div>
-//       </div>
-//       <div style={{
+//     <div
+//       style={{
 //         position: 'absolute',
 //         bottom: '10%',
 //         left: '10%',
@@ -428,10 +220,84 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
 //         textAlign: 'center',
 //         color: 'white',
 //         textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+//         opacity,
+//       }}
+//     >
+//       <h1
+//         style={{
+//           fontSize: '3em',
+//           marginBottom: '0.5em',
+//           transform: `translateY(${titleY}px)`,
+//         }}
+//       >
+//         {title}
+//       </h1>
+//       <h2
+//         style={{
+//           fontSize: '1.5em',
+//           transform: `translateY(${subtitleY}px)`,
+//         }}
+//       >
+//         {subtitle}
+//       </h2>
+//     </div>
+//   );
+// };
+
+// export const AngledPresentation: React.FC<AngledPresentationProps> = ({
+//   media,
+//   isVideo,
+//   volume,
+//   title,
+//   subtitle,
+//   deviceColor,
+//   backgroundColor,
+//   zoom = 100,
+//   rotation = 0,
+//   durationInFrames: propDurationInFrames,
+//   startFrom = 0,
+// }) => {
+//   const frame = useCurrentFrame();
+//   const { fps, durationInFrames: configDurationInFrames } = useVideoConfig();
+
+//   const actualDurationInFrames = propDurationInFrames || configDurationInFrames;
+//   const adjustedFrame = frame - startFrom;
+
+//   const rotationProgress = useMemo(() => {
+//     return spring({
+//       fps,
+//       frame: adjustedFrame,
+//       config: {
+//         damping: 100,
+//         stiffness: 200,
+//         mass: 0.5,
+//       },
+//       durationInFrames: Math.min(actualDurationInFrames, fps * 2), // Limit rotation animation to 2 seconds
+//     });
+//   }, [adjustedFrame, fps, actualDurationInFrames]);
+
+//   const finalRotation = interpolate(rotationProgress, [0, 1], [-20 + rotation, rotation]);
+//   const scale = zoom / 100;
+
+//   return (
+//     <AbsoluteFill
+//       style={{
+//         backgroundColor,
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//       }}
+//     >
+//       <div style={{
+//         transform: `perspective(1000px) rotateY(${finalRotation}deg) scale(${scale})`,
+//         transformStyle: 'preserve-3d',
 //       }}>
-//         <h1 style={{ fontSize: '3em', marginBottom: '0.5em' }}>{title}</h1>
-//         <h2 style={{ fontSize: '1.5em' }}>{subtitle}</h2>
+//         <DeviceFrame deviceColor={deviceColor}>
+//           <MediaContent media={media} isVideo={isVideo} volume={volume} />
+//         </DeviceFrame>
 //       </div>
+//       <TitleOverlay title={title} subtitle={subtitle} />
 //     </AbsoluteFill>
 //   );
 // };
+
