@@ -74,55 +74,7 @@ export default function ConfigurationPanel({
           <h3 className="font-medium bg-gradient-to-r from-[#e7dfd6] to-[#bdc2c9] bg-clip-text text-transparent mb-4">
             Video Duration
           </h3>
-          {/* <div className="grid grid-rows-2 gap-3"> */}
-          {/* <div className="grid grid-cols-2 gap-3">
-              {durationOptions.slice(0, 2).map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => {
-                    if (![10, 30, 60].includes(option.value)) {
-                      setSelectedDuration(option.value)
-                    }
-                  }}
-                  className={cn(
-                    "py-1 px-1 rounded-xl text-sm font-medium transition-all duration-300",
-                    "border",
-                    selectedDuration === option.value
-                      ? "bg-[#e7dfd6]/20 border-[#e7dfd6]/30 text-[#e7dfd6] shadow-lg shadow-[#e7dfd6]/10"
-                      : [10, 30, 60].includes(option.value)
-                        ? "bg-black/30 border-gray-800 text-[#86868b]"
-                        : "bg-black/30 border-white/10 text-[#86868b] hover:border-[#e7dfd6]/30 hover:text-[#e7dfd6]/70",
-                    [10, 30, 60].includes(option.value) && "opacity-50 cursor-not-allowed"
-                  )}
-                >
-                  {[10, 30, 60].includes(option.value) ? `${option.label} (Coming Soon)` : option.label}
-                </button>
-              ))}
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {durationOptions.slice(2, 4).map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => {
-                    if (![10, 30, 60].includes(option.value)) {
-                      setSelectedDuration(option.value)
-                    }
-                  }}
-                  className={cn(
-                    "py-1 px-1 rounded-xl text-sm font-medium transition-all duration-300",
-                    "border",
-                    selectedDuration === option.value
-                      ? "bg-[#e7dfd6]/20 border-[#e7dfd6]/30 text-[#e7dfd6] shadow-lg shadow-[#e7dfd6]/10"
-                      : [10, 30, 60].includes(option.value)
-                        ? "bg-black/30 border-gray-800 text-[#86868b]"
-                        : "bg-black/30 border-white/10 text-[#86868b] hover:border-[#e7dfd6]/30 hover:text-[#e7dfd6]/70",
-                    [10, 30, 60].includes(option.value) && "opacity-50 cursor-not-allowed"
-                  )}
-                >
-                  {[10, 30, 60].includes(option.value) ? `${option.label} (Coming Soon)` : option.label}
-                </button>
-              ))}
-            </div> */}
+      
           <div className="grid grid-cols-2 gap-3">
             {durationOptions.map((option) => (
               <button

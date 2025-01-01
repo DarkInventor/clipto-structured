@@ -15,10 +15,10 @@ interface TemplateListProps {
 
 export default function TemplateList({ selectedTemplate, onSelectTemplate }: TemplateListProps) {
   const templates: Template[] = [
-    { title: 'Angled Presentation', duration: '00:05', effect: 'angled' },
-    { title: 'Quick Teaser!', duration: '00:05', effect: 'quickTeaser' },
-    { title: 'Laptop Zoom', duration: '00:05', effect: 'laptop' },
-    { title: 'Dynamic Showcase', duration: '00:05', effect: 'dynamicShowcase' },
+    { title: 'Angled Presentation', duration: '', effect: 'angled' },
+    { title: 'Quick Teaser!', duration: '', effect: 'quickTeaser' },
+    { title: 'Laptop Zoom', duration: '', effect: 'laptop' },
+    { title: 'Dynamic Showcase', duration: '', effect: 'dynamicShowcase' },
   ];
 
   return (
