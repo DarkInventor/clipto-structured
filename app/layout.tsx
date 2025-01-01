@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
     <head>
-
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="35c37d5f-f52c-45c6-82c2-d11a34f38638"></script>
     <meta name="apple-mobile-web-app-title" content="Animator Studio" />
     </head>
       <body
