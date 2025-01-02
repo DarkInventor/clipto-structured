@@ -23,7 +23,8 @@ export default function Home() {
       <OverlappingAppShowcase />
       <AnimatedStats />
       <HowItWorks />
-      <Pricing />
+      {/* Step 3 */}
+      {/* <Pricing /> */}
       <FAQSection />
       <CTASection />
       < Footer />

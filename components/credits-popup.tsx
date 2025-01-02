@@ -235,7 +235,9 @@ interface CreditsPopupProps {
 export default function CreditsPopup({ credits, loading, error, onClose, plan }: CreditsPopupProps) {
   let totalCredits = 0;
   if (plan === 'free') {
-    totalCredits = 20;
+    // Change it back to 20 when making it paid again 
+    // Step 6
+    totalCredits = 100;
   } else if (plan === 'hobby') {
     totalCredits = 500;
   } else if (plan === 'creator') {

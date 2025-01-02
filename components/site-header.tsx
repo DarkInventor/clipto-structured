@@ -105,7 +105,7 @@ export function SiteHeader() {
               </Link>
             </NavigationMenuItem>
            
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <Link href="/#pricing" legacyBehavior passHref>
                 <NavigationMenuLink 
                   className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-gray-700 hover:text-[#fffaf6] active:bg-gray-700 active:text-black focus:bg-gray-700 focus:text-black`}
@@ -117,7 +117,7 @@ export function SiteHeader() {
                   <span className="text-[#c8c2bd]">Pricing</span>
                 </NavigationMenuLink>
               </Link>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
             <NavigationMenuItem>
               <Link href="/about" legacyBehavior passHref>
               <NavigationMenuLink 

@@ -211,46 +211,47 @@ export default function PricingComponent() {
     },
   ]
 
-  const handleSubscribe = async (planName: string, stripePriceId: string | null) => {
-    if (planName === 'Free') {
-      router.push('/mockup-home')
-    } else if (stripePriceId) {
-      if (!user) {
-        console.error('User must be logged in to subscribe')
-        // router.push('/login')
-        router.push('/login?from=pricing')
-        return
-      }
+  // Make Animator Studio Free Step 1
+  // const handleSubscribe = async (planName: string, stripePriceId: string | null) => {
+  //   if (planName === 'Free') {
+  //     router.push('/mockup-home')
+  //   } else if (stripePriceId) {
+  //     if (!user) {
+  //       console.error('User must be logged in to subscribe')
+  //       // router.push('/login')
+  //       router.push('/login?from=pricing')
+  //       return
+  //     }
 
-      try {
-        console.log('Creating checkout session...')
+  //     try {
+  //       console.log('Creating checkout session...')
 
-        const response = await fetch('/api/webhooks/stripe', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            priceId: stripePriceId,
-            isAnnual,
-            userId: user.uid,
-          }),
-        })
+  //       const response = await fetch('/api/webhooks/stripe', {
+  //         method: 'PUT',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({
+  //           priceId: stripePriceId,
+  //           isAnnual,
+  //           userId: user.uid,
+  //         }),
+  //       })
 
-        const { sessionId } = await response.json()
-        const stripe = await stripePromise
+  //       const { sessionId } = await response.json()
+  //       const stripe = await stripePromise
 
-        if (stripe) {
-          const { error } = await stripe.redirectToCheckout({ sessionId })
-          if (error) {
-            console.error('Error:', error)
-          }
-        }
-      } catch (error) {
-        console.error('Error:', error)
-      }
-    }
-  }
+  //       if (stripe) {
+  //         const { error } = await stripe.redirectToCheckout({ sessionId })
+  //         if (error) {
+  //           console.error('Error:', error)
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error('Error:', error)
+  //     }
+  //   }
+  // }
 
   return (
     <>
@@ -299,7 +300,8 @@ export default function PricingComponent() {
                          )}
                 <Button 
                   className="mt-4 w-full bg-white text-black hover:bg-[#86868b]"
-                  onClick={() => handleSubscribe(plan.name, plan.stripePriceId)}
+                  // Step 2
+                  // onClick={() => handleSubscribe(plan.name, plan.stripePriceId)}
                 >
                   Subscribe
                   
