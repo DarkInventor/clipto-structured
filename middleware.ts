@@ -123,12 +123,17 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith('/tags') || 
       pathname === '/engyne-sitemap.xml' || 
       pathname.startsWith('/_engyne')) {
-    // Construct the full Engyne URL
-    const engyneUrl = new URL(pathname, ENGYNE_URL)
-    console.log('Redirecting to:', engyneUrl.toString())
     
-    // Use NextResponse.redirect with the full URL string
-    return NextResponse.redirect(engyneUrl.toString())
+    // Remove the initial path segment (e.g., '/blog') and construct the Engyne URL
+    const pathWithoutPrefix = pathname.replace(/^\/(?:blog|tags|_engyne)/, '')
+    const finalPath = pathWithoutPrefix || '/' // Use '/' if pathWithoutPrefix is empty
+    const engyneUrl = new URL(finalPath, ENGYNE_URL)
+    
+    // Add any query parameters from the original request
+    engyneUrl.search = request.nextUrl.search
+    
+    console.log('Redirecting to:', engyneUrl.toString())
+    return NextResponse.rewrite(engyneUrl)
   }
 
   // Rest of authentication logic
