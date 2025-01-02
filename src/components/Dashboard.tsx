@@ -292,7 +292,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onBackToHome }) => {
             <div className="bg-white p-6 rounded-lg shadow-xl">
               <div className="text-center mb-4">
                 <p className="text-xl font-semibold">Rendering your video...</p>
-                <p className="text-sm text-gray-500">Please wait, this may take a few minutes.</p>
+                <p className="text-sm text-gray-500">Please wait, this may take a few seconds.</p>
               </div>
               <div className="w-64 h-3 bg-gray-200 rounded-full overflow-hidden">
                 <div 

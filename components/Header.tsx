@@ -140,7 +140,7 @@ export default function Header({
 
         try {
           const db = getFirestore(app);
-          await addDoc(collection(db, 'projects'), {
+          await addDoc(collection(db, 'renderData'), {
             userId: user.uid,
             renderedUrl: renderedVideoUrl,
             template: selectedTemplate,
