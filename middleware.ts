@@ -46,8 +46,8 @@ async function authMiddleware(request: NextRequest) {
   const session = request.cookies.get('session')?.value
 
   // List of routes that should always be accessible
-  const publicRoutes = ['/', '/login', '/register']
-  const alwaysAccessibleRoutes = [...publicRoutes, '/api/success-stripe']
+  const publicRoutes = ['/', '/login', '/register', '/blog']
+  const alwaysAccessibleRoutes = [...publicRoutes, '/api/success-stripe', '/blog']
 
   // Check if the current route should always be accessible
   if (alwaysAccessibleRoutes.includes(request.nextUrl.pathname)) {
