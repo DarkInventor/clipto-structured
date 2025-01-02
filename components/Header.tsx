@@ -88,7 +88,7 @@
 
 import { useEffect, useState } from 'react'
 import { getAuth } from 'firebase/auth'
-import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore'
+import { getFirestore, doc, getDoc, updateDoc, addDoc, collection, serverTimestamp, Timestamp } from 'firebase/firestore'
 import { app } from '@/firebaseConfig' // Make sure this path is correct
 import { motion } from 'framer-motion'
 import { PlayIcon, DownloadIcon, ArrowRightIcon } from '@radix-ui/react-icons'
@@ -128,6 +128,36 @@ export default function Header({
     fetchUserCredits()
   }, [])
 
+  useEffect(() => {
+    const saveProjectData = async () => {
+      if (renderedVideoUrl) {
+        const auth = getAuth(app);
+        const user = auth.currentUser;
+        if (!user) {
+          console.error('User not authenticated');
+          return;
+        }
+
+        try {
+          const db = getFirestore(app);
+          await addDoc(collection(db, 'projects'), {
+            userId: user.uid,
+            renderedUrl: renderedVideoUrl,
+            template: selectedTemplate,
+            createdAt: Timestamp.now(),
+            // Add any other relevant data here
+          });
+          console.log('Project data saved successfully');
+        } catch (error) {
+          console.error('Error saving project data:', error);
+        }
+      }
+    };
+
+    saveProjectData();
+  }, [renderedVideoUrl, selectedTemplate]);
+
+
   const handleDownload = async () => {
     if (!renderedVideoUrl) return;
     console.log('Downloading video from URL:', renderedVideoUrl);
@@ -138,7 +168,7 @@ export default function Header({
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = `clipto-video-${Date.now()}.mp4`;
+      link.download = `Animator-Studio-${Date.now()}.mp4`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -147,6 +177,7 @@ export default function Header({
       console.error('Error downloading video:', error);
       alert('Failed to download video. Please try again.');
     }
+    
   };
 
 
@@ -222,7 +253,7 @@ export default function Header({
             disabled={isRenderDisabled || isUpdatingCredits}
           >
             <PlayIcon className="mr-2 h-4 w-4" />
-            Render <span className="ml-2 text-sm hidden sm:inline opacity-75">⌘ + J</span>
+            Render
           </motion.button>
         )}
         {/* {userCredits !== null && (
