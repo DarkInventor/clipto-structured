@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button } from "./ui/button";
 import { SiteHeader } from "./site-header";
+import SiteBanner from "./site-banner";
 
 const companies = [
   "Google",
@@ -32,7 +33,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <><SiteHeader /><div className="min-h-screen w-screen overflow-hidden bg-black font-[Poppins] text-[calc(var(--_size)*0.022)] [--_factor:min(1000px,100vh)] [--_size:min(var(--_factor),100vw)]">
+    <>
+
+   <SiteHeader />
+  
+   
+    <div className="min-h-screen w-screen overflow-hidden bg-black font-[Poppins] text-[calc(var(--_size)*0.022)] [--_factor:min(1000px,100vh)] [--_size:min(var(--_factor),100vw)]">
       <div className="relative flex flex-col min-h-screen w-full items-center justify-center pt-0 lg:pt-10 md:pt-10 px-4 md:px-0 pb-0">
         <div className="z-10 flex min-h-10 items-center justify-center pb-0 py-9 pb-3">
           <div

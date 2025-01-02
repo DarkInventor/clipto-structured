@@ -19,6 +19,7 @@ import { useProjects, Scene } from '@/hooks/useProjects'
 import RecentProjects from '@/components/RecentProjects'
 import { Button } from '@/components/ui/button'
 import { DownloadIcon } from '@radix-ui/react-icons'
+import SiteBanner from '@/components/site-banner'
 
 export default function App() {
   const { user, signOut } = useAuth()
@@ -172,6 +173,8 @@ export default function App() {
   const totalDuration = selectedDuration * 30;
 
   return (
+    <>
+    {/* <SiteBanner /> */}
     <div className="flex flex-col h-screen lg:flex-row bg-black">
       <Sidebar
         isOpen={leftSidebarOpen}
@@ -330,6 +333,7 @@ export default function App() {
         ref={fileInputRef}
       />
     </div>
+    </>
   )
 }
 

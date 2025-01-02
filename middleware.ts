@@ -40,83 +40,120 @@
 
 
 
+
+
+// import { NextResponse } from 'next/server'
+// import type { NextRequest } from 'next/server'
+
+// const ENGYNE_URL = "https://animator.engyne.page"
+
+// export async function middleware(request: NextRequest) {
+//   const session = request.cookies.get('session')?.value
+//   const { pathname } = request.nextUrl
+//   const hostname = request.headers.get("host")
+
+//   // List of routes that should always be accessible
+//   const publicRoutes = ['/', '/login', '/register']
+//   const blogRoutes = ['/blog', '/tags', '/engyne-sitemap.xml', '/_engyne']
+//   const alwaysAccessibleRoutes = [...publicRoutes, '/api/success-stripe', ...blogRoutes]
+
+//   console.log('Request:', {
+//     pathname,
+//     hostname,
+//     isBlogRoute: pathname.startsWith('/blog')
+//   })
+
+//   // Check if this is a blog route
+//   if (pathname.startsWith('/blog') || pathname.startsWith('/tags')) {
+//     // Rewrite to the full Engyne URL
+//     const rewriteUrl = new URL(pathname, ENGYNE_URL)
+//     console.log('Rewriting to:', rewriteUrl.toString())
+//     return NextResponse.rewrite(rewriteUrl)
+//   }
+
+//   // Rest of authentication logic
+//   if (alwaysAccessibleRoutes.includes(pathname)) {
+//     return NextResponse.next()
+//   }
+
+//   if (pathname === '/mockup-home' && request.headers.get('referer')?.includes('/api/success-stripe')) {
+//     return NextResponse.next()
+//   }
+
+//   if (session) {
+//     if (publicRoutes.includes(pathname)) {
+//       return NextResponse.redirect(new URL('/mockup-home', request.url))
+//     }
+//     return NextResponse.next()
+//   } 
+//   else {
+//     return NextResponse.redirect(new URL('/login', request.url))
+//   }
+// }
+
+// export const config = {
+//   matcher: [
+//     '/((?!_next/static|_next/image|favicon.ico|api/success-stripe).*)',
+//   ],
+// }
+
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-// Rename the existing middleware function to authMiddleware
-async function authMiddleware(request: NextRequest) {
+const ENGYNE_URL = "https://animator.engyne.page"
+
+export async function middleware(request: NextRequest) {
   const session = request.cookies.get('session')?.value
+  const { pathname } = request.nextUrl
+  const hostname = request.headers.get("host")
 
   // List of routes that should always be accessible
-  // Added /blog and /blog/* to public routes
-  const publicRoutes = ['/', '/login', '/register', '/blog']
-  const alwaysAccessibleRoutes = [...publicRoutes, '/api/success-stripe']
+  const publicRoutes = ['/', '/login', '/register']
+  const blogRoutes = ['/blog', '/tags', '/engyne-sitemap.xml', '/_engyne']
+  const alwaysAccessibleRoutes = [...publicRoutes, '/api/success-stripe', ...blogRoutes]
 
-  // Check if the current route should always be accessible
-  // Also check if the path starts with /blog to allow all blog routes
-  if (alwaysAccessibleRoutes.includes(request.nextUrl.pathname) || 
-      request.nextUrl.pathname.startsWith('/blog/') ||
-      request.nextUrl.pathname.startsWith('/tags/')) {
+  console.log('Request:', {
+    pathname,
+    hostname,
+    isBlogRoute: pathname.startsWith('/blog') || pathname.startsWith('/tags')
+  })
+
+  // Check if this is a blog route or other Engyne-related route
+  if (pathname.startsWith('/blog') || 
+      pathname.startsWith('/tags') || 
+      pathname === '/engyne-sitemap.xml' || 
+      pathname.startsWith('/_engyne')) {
+    // Construct the full Engyne URL
+    const engyneUrl = new URL(pathname, ENGYNE_URL)
+    console.log('Redirecting to:', engyneUrl.toString())
+    
+    // Use NextResponse.redirect with the full URL string
+    return NextResponse.redirect(engyneUrl.toString())
+  }
+
+  // Rest of authentication logic
+  if (alwaysAccessibleRoutes.includes(pathname)) {
     return NextResponse.next()
   }
 
-  // Special case for redirecting from /api/success-stripe to /mockup-home
-  if (request.nextUrl.pathname === '/mockup-home' && request.headers.get('referer')?.includes('/api/success-stripe')) {
+  if (pathname === '/mockup-home' && request.headers.get('referer')?.includes('/api/success-stripe')) {
     return NextResponse.next()
   }
 
   if (session) {
-    // User is authenticated
-    if (publicRoutes.includes(request.nextUrl.pathname)) {
-      // Redirect to mockup-home if trying to access public pages while authenticated
+    if (publicRoutes.includes(pathname)) {
       return NextResponse.redirect(new URL('/mockup-home', request.url))
     }
-    // For all other routes, allow access
     return NextResponse.next()
   } 
   else {
-    // User is not authenticated, redirect to login
     return NextResponse.redirect(new URL('/login', request.url))
   }
 }
 
-// New combined middleware function
-export async function middleware(req: NextRequest) {
-  const engyneSubdomain = "animator"
-  const url = req.nextUrl.clone();
-  const { pathname } = req.nextUrl;
-  const hostname = req.headers.get("host");
-
-  if (!hostname) {
-    return new Response(null, {
-      status: 400,
-      statusText: "No hostname found in request headers",
-    });
-  }
-
-  // Engyne blog logic
-  if (pathname === "/engyne-sitemap.xml") {
-    return NextResponse.rewrite(new URL(pathname, `https://${engyneSubdomain}.engyne.page`))
-  }
-
-  if (pathname.startsWith("/blog") || pathname.startsWith("/tags")) {
-    return NextResponse.rewrite(new URL(pathname, `https://${engyneSubdomain}.engyne.page`))
-  }
-
-  if (pathname.startsWith("/_engyne")) {
-    return NextResponse.rewrite(new URL(pathname, `https://${engyneSubdomain}.engyne.page`))
-  }
-
-  // If not handled by Engyne blog logic, proceed with auth middleware
-  return authMiddleware(req)
-}
-
-// Updated config to include both matchers
 export const config = {
   matcher: [
-    '/engyne-sitemap.xml',
-    '/((?!_next/static|_next/image|favicon.ico).*)',
-    '/((?!_next|api|[\\w-]+\\.\\w+).*)'
+    '/((?!_next/static|_next/image|favicon.ico|api/success-stripe).*)',
   ],
 }
 

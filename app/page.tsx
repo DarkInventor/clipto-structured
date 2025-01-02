@@ -11,6 +11,7 @@ import OverlappingAppShowcase from "@/components/overlapping-showcase";
 import AnimatedStats from "@/components/animated-stats";
 import FAQSection from "@/components/faq-section";
 import { AuthCheck } from "@/components/AuthCheck";
+import SiteBanner from "@/components/site-banner";
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       {/* <App /> */}
       {/* <Landing /> */}
       {/* <Navbar /> */}
+      
       <Hero />
       <OverlappingAppShowcase />
       <AnimatedStats />
