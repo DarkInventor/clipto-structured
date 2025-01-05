@@ -26,7 +26,7 @@ export default function Home() {
       <AnimatedStats />
       <HowItWorks />
       {/* Step 3 */}
-      {/* <Pricing /> */}
+      <Pricing />
       <FAQSection />
       <CTASection />
       < Footer />

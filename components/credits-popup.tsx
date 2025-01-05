@@ -237,7 +237,7 @@ export default function CreditsPopup({ credits, loading, error, onClose, plan }:
   if (plan === 'free') {
     // Change it back to 20 when making it paid again 
     // Step 6
-    totalCredits = 100;
+    totalCredits = 20;
   } else if (plan === 'hobby') {
     totalCredits = 500;
   } else if (plan === 'creator') {

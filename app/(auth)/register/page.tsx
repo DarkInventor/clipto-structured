@@ -629,7 +629,7 @@ export default function RegisterPage() {
         permissions: [],
         // Change it back to 20 when making it Paid again
         // Step 4
-        credits: 100,
+        credits: 20,
         hasReceivedInitialCredits: true,
         subscription: {
           plan: "free",
@@ -660,10 +660,10 @@ export default function RegisterPage() {
           // @ts-ignore
           // Change it back to 20 when making it paid 
           // Step 5
-          credits: (userData.credits || 0) + 100,
+          credits: (userData.credits || 0) + 20,
           hasReceivedInitialCredits: true,
         });
-        console.log("Existing user logged in and received 100 credits");
+        console.log("Existing user logged in and received 20 credits");
       } else {
         await updateDoc(userDocRef, {
           lastLoginAt: new Date(),
