@@ -173,14 +173,15 @@ export default function PricingComponent() {
     {
       name: 'Hobby',
       description: 'Perfect to get started',
-      price: isAnnual ? 14 : 19,
+      price: isAnnual ? 7 : 9,
       features: [
         '500 credits',
         'Priority support',
         'Access to all future updates',
       ],
-      annualPrice: 14 * 12,
-      stripePriceId: isAnnual ? 'price_1QaAi9APpzV89AesBfUWkLkb' : 'price_1QaAl4APpzV89AesypPFchfT',
+      annualPrice: 7 * 12,
+      // stripePriceId: isAnnual ? 'price_1QaAi9APpzV89AesBfUWkLkb' : 'price_1QaAl4APpzV89AesypPFchfT', // Actual Price
+      stripePriceId: isAnnual ? 'price_1Qm7YAAPpzV89Aesa2pyVtPX' : 'price_1Qm7ZCAPpzV89AesnhKw5aOn',
     },
     {
       name: 'Creator',

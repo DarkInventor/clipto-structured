@@ -19,6 +19,7 @@ export default function TemplateList({ selectedTemplate, onSelectTemplate }: Tem
     { title: 'Quick Teaser!', duration: '', effect: 'quickTeaser' },
     { title: 'Laptop Zoom', duration: '', effect: 'laptop' },
     { title: 'Dynamic Showcase', duration: '', effect: 'dynamicShowcase' },
+    // { title: 'Dynamic Showcase', duration: '', effect: 'dynamicShowcase' },
   ];
 
   return (
