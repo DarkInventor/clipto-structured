@@ -23,7 +23,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onBackToHome }) => {
 
   // Template and Layout State
   const [selectedTemplate, setSelectedTemplate] = useState('Angled Presentation');
-  const [presentationType, setPresentationType] = useState<'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase'>('angled');
+  const [presentationType, setPresentationType] = useState<'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase' | 'imageShowcase'>('angled');
   const [selectedAspectRatio, setSelectedAspectRatio] = useState(aspectRatios[0]);
   const [leftSidebarOpen, setLeftSidebarOpen] = useState(true);
   const [rightSidebarOpen, setRightSidebarOpen] = useState(true);
@@ -74,7 +74,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onBackToHome }) => {
     setUploadedFileUrl(url);
   };
 
-  const handleTemplateSelect = (template: { title: string; effect: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase' }) => {
+  const handleTemplateSelect = (template: { title: string; effect: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase' | 'imageShowcase' }) => {
     console.log('Dashboard: Template selected', template);
     setSelectedTemplate(template.title);
     setPresentationType(template.effect);

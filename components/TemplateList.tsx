@@ -5,7 +5,7 @@ import { PlayIcon } from '@radix-ui/react-icons';
 interface Template {
   title: string;
   duration: string;
-  effect: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase';
+  effect: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase' | 'imageShowcase';
 }
 
 interface TemplateListProps {
@@ -19,7 +19,7 @@ export default function TemplateList({ selectedTemplate, onSelectTemplate }: Tem
     { title: 'Quick Teaser!', duration: '', effect: 'quickTeaser' },
     { title: 'Laptop Zoom', duration: '', effect: 'laptop' },
     { title: 'Dynamic Showcase', duration: '', effect: 'dynamicShowcase' },
-    // { title: 'Dynamic Showcase', duration: '', effect: 'dynamicShowcase' },
+    { title: 'Image Showcase', duration: '', effect: 'imageShowcase' },
   ];
 
   return (

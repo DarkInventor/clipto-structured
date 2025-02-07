@@ -193,6 +193,8 @@ import { AngledPresentation } from './AngledPresentation'
 import { QuickTeaser } from './QuickTeaser'
 import { Laptop } from './Laptop'
 import { DynamicShowcase } from './DynamicShowcase'
+import { ImageShowcase } from './ImageShowcase'
+
 
 interface Scene {
   duration: number;
@@ -205,7 +207,9 @@ interface CompositionProps {
   scenes?: Scene[];
   fileUrl?: string;
   isVideo?: boolean;
-  presentationType?: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase';
+
+  // @ts-ignore
+  presentationType?: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase', 'imageShowcase';
   audioVolume?: number;
   adTitle?: string;
   adDescription?: string;
@@ -256,6 +260,9 @@ const MyComposition: React.FC<CompositionProps> = ({
         return <Laptop {...props} />;
       case 'dynamicShowcase':
         return <DynamicShowcase {...props} />;
+        // @ts-ignore
+      case 'imageShowcase':
+          return <ImageShowcase {...props} />;
       default:
         return null;
     }
