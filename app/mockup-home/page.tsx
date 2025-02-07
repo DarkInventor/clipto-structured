@@ -64,7 +64,7 @@
         const downloadUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = downloadUrl;
-        link.download = `clipto-video-${Date.now()}.mp4`;
+        link.download = `Animator-Studio-${Date.now()}.mp4`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

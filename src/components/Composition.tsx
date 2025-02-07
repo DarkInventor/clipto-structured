@@ -286,8 +286,8 @@ const MyComposition: React.FC<CompositionProps> = ({
         return <QuickTeaser {...props} />;
       case 'dynamicShowcase':
         return <DynamicShowcase {...props} />;
-        // @ts-ignore
-      case 'imageShowcase':
+      
+      case 'imageShowcase': 
         // @ts-ignore
           return <ImageShowcase {...props} />;
       default:

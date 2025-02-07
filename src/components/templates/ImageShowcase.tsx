@@ -14,8 +14,7 @@ interface ImageShowcaseProps {
   rotation: number
   backgroundColor: string
   durationInFrames: number
-  frame: number
-  loopCount: number
+  startFrom: number
 }
 
 const AnimatedText: React.FC<{ text: string; delay: number }> = ({ text, delay }) => {
@@ -42,7 +41,6 @@ const AnimatedText: React.FC<{ text: string; delay: number }> = ({ text, delay }
               opacity: progress,
               transform: `translateY(${interpolate(progress, [0, 1], [20, 0])}px)`,
             }}
-            
           >
             {char}
           </span>
@@ -77,12 +75,15 @@ export const ImageShowcase: React.FC<ImageShowcaseProps> = ({
   rotation,
   backgroundColor,
   durationInFrames,
-  frame,
+  startFrom,
 }) => {
+  const frame = useCurrentFrame()
   const { fps, width, height } = useVideoConfig()
 
+  const adjustedFrame = frame - startFrom
+
   const progress = spring({
-    frame,
+    frame: adjustedFrame,
     fps,
     config: {
       damping: 100,
@@ -91,18 +92,18 @@ export const ImageShowcase: React.FC<ImageShowcaseProps> = ({
   })
 
   const scale = interpolate(progress, [0, 1], [0.8, 1.2 * (zoom / 100)])
-  const rotationY = interpolate(frame, [0, durationInFrames], [-100, 30])
+  const rotationY = interpolate(adjustedFrame, [0, durationInFrames], [-100, 30])
   const shadowBlur = interpolate(progress, [0, 1], [0, 20])
   const shadowOpacity = interpolate(progress, [0, 1], [0, 0.5])
-  const posX = interpolate(frame, [0, durationInFrames / 2, durationInFrames], [-150, 200, -150])
-  const posY = interpolate(frame, [0, durationInFrames / 2, durationInFrames], [-130, 200, -230])
-  const skewX = interpolate(frame, [0, durationInFrames / 2, durationInFrames], [0, 35, 0])
-  const tintOpacity = interpolate(frame, [0, durationInFrames / 2, durationInFrames], [0, 0.3, 0])
-  const blurAmount = interpolate(frame, [0, durationInFrames / 2, durationInFrames], [5, 0, 5])
+  const posX = interpolate(adjustedFrame, [0, durationInFrames / 2, durationInFrames], [-150, 200, -150])
+  const posY = interpolate(adjustedFrame, [0, durationInFrames / 2, durationInFrames], [-130, 200, -230])
+  const skewX = interpolate(adjustedFrame, [0, durationInFrames / 2, durationInFrames], [0, 35, 0])
+  const tintOpacity = interpolate(adjustedFrame, [0, durationInFrames / 2, durationInFrames], [0, 0.3, 0])
+  const blurAmount = interpolate(adjustedFrame, [0, durationInFrames / 2, durationInFrames], [5, 0, 5])
   const maskSize = interpolate(progress, [0, 1], [0, Math.sqrt(width * width + height * height)])
 
   // New highlight effect
-  const highlightProgress = interpolate(frame, [0, durationInFrames], [0, 1])
+  const highlightProgress = interpolate(adjustedFrame, [0, durationInFrames], [0, 1])
   const highlightPosition = interpolate(highlightProgress, [0, 1], [-100, 100])
 
   return (
