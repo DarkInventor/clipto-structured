@@ -9,10 +9,10 @@ interface AngledPresentationProps {
   subtitle: string;
   zoom: number;
   rotation: number;
+  text: string;
+  MediaComponent: React.ComponentType<any>;
+  duration: number;
   backgroundColor: string;
-  durationInFrames: number;
-  frame: number;
-  loopCount: number;
 }
 
 export const AngledPresentation: React.FC<AngledPresentationProps> = ({
@@ -23,15 +23,16 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
   subtitle,
   zoom,
   rotation,
-  backgroundColor,
-  durationInFrames,
-  frame,
-  loopCount,
+  text,
+  MediaComponent,
+  duration,
+  backgroundColor 
 }) => {
+  const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
   
   // Ensure we have valid duration values
-  const safeDuration = Math.max(1, durationInFrames || 10) // Default to 10 seconds if duration is 0 or undefined
+  const safeDuration = Math.max(1, duration || 10) // Default to 10 seconds if duration is 0 or undefined
   const totalFrames = safeDuration * fps
   const initialAnimationDuration = Math.min(fps, totalFrames / 4) // Use 1/4 of total duration, max 1 second
   
@@ -63,7 +64,6 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
       }}
     >
       <div style={{ width: '80%', height: '80%', position: 'relative', backgroundColor }}>
-        {/* @ts-ignore */}
         <MediaComponent
           src={media}
           style={{ width: '100%', height: '100%', objectFit: 'cover', backgroundColor }}
@@ -81,6 +81,21 @@ export const AngledPresentation: React.FC<AngledPresentationProps> = ({
           <h1 style={{ fontSize: 40, marginBottom: 10 }}>{title}</h1>
           <h2 style={{ fontSize: 24 }}>{subtitle}</h2>
         </div>
+        {text && (
+          <div
+            style={{
+              position: 'absolute',
+              top: 20,
+              right: 20,
+              backgroundColor: 'rgba(0,0,0,0.5)',
+              color: 'white',
+              padding: 10,
+              borderRadius: 5,
+            }}
+          >
+            {text}
+          </div>
+        )}
       </div>
     </AbsoluteFill>
   )

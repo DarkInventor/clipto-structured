@@ -219,12 +219,12 @@
 
 // MyComposition.tsx
 import React from 'react'
-import { AbsoluteFill, Sequence, useVideoConfig, useCurrentFrame } from 'remotion'
+import { AbsoluteFill, Sequence, useVideoConfig } from 'remotion'
 import { AngledPresentation } from './templates/AngledPresentation'
 import { QuickTeaser } from './templates/QuickTeaser'
 import { Laptop } from './templates/Laptop'
 import { DynamicShowcase } from './templates/DynamicShowcase'
-import { FloatingSpotlight } from './templates/FloatingSpotlight'
+import { ImageShowcase } from './templates/ImageShowcase'
 
 interface Scene {
   duration: number;
@@ -237,7 +237,7 @@ interface CompositionProps {
   scenes?: Scene[];
   fileUrl?: string;
   isVideo?: boolean;
-  presentationType?: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase' | 'floatingSpotlight';
+  presentationType?: 'angled' | 'quickTeaser' | 'laptop' | 'dynamicShowcase' | 'imageShowcase';
   audioVolume?: number;
   adTitle?: string;
   adDescription?: string;
@@ -259,14 +259,9 @@ const MyComposition: React.FC<CompositionProps> = ({
   durationInSeconds,
 }) => {
   const { fps } = useVideoConfig();
-  const frame = useCurrentFrame();
-
   const totalFrames = durationInSeconds * fps;
-  const loopDuration = 5 * fps; // 5 seconds loop
-  const loopedFrame = frame % loopDuration;
-  const loopCount = Math.floor(frame / loopDuration);
 
-  const renderEffect = (scene: { zoom: number; rotation: number }) => {
+  const renderEffect = (scene: { zoom: number; rotation: number }, sceneDuration: number, startFrame: number = 0) => {
     const props = {
       media: fileUrl,
       isVideo,
@@ -276,22 +271,25 @@ const MyComposition: React.FC<CompositionProps> = ({
       zoom: scene.zoom,
       rotation: scene.rotation,
       backgroundColor,
-      durationInFrames: loopDuration,
-      frame: loopedFrame,
-      loopCount,
+      durationInFrames: sceneDuration,
+      startFrom: startFrame,
     };
 
     switch (presentationType) {
       case 'angled':
+        // @ts-ignore
         return <AngledPresentation {...props} />;
-      case 'quickTeaser':
-        return <QuickTeaser {...props} />;
       case 'laptop':
         return <Laptop {...props} />;
+      case 'quickTeaser':
+        // @ts-ignore
+        return <QuickTeaser {...props} />;
       case 'dynamicShowcase':
         return <DynamicShowcase {...props} />;
-      case 'floatingSpotlight':
-        return <FloatingSpotlight {...props} />;
+      
+      case 'imageShowcase': 
+        // @ts-ignore
+          return <ImageShowcase {...props} />;
       default:
         return null;
     }
@@ -310,14 +308,21 @@ const MyComposition: React.FC<CompositionProps> = ({
     >
       <AbsoluteFill style={{ backgroundColor }}>
         {scenes.length > 0 ? (
-          scenes.map((scene, index) => (
-            <Sequence key={index} durationInFrames={scene.duration * fps} from={index * scene.duration * fps}>
-              {renderEffect(scene)}
-            </Sequence>
-          ))
+          scenes.map((scene, index) => {
+            const startFrame = index * scene.duration * fps;
+            return (
+              <Sequence 
+                key={index} 
+                durationInFrames={scene.duration * fps} 
+                from={startFrame}
+              >
+                {renderEffect(scene, scene.duration * fps, startFrame)}
+              </Sequence>
+            );
+          })
         ) : (
           <Sequence durationInFrames={totalFrames}>
-            {renderEffect({ zoom: 100, rotation: 0 })}
+            {renderEffect({ zoom: 100, rotation: 0 }, totalFrames, 0)}
           </Sequence>
         )}
       </AbsoluteFill>
