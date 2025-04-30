@@ -1,8 +1,8 @@
-# Remotion Ads Generator
+# Animator Studio
 
 ## Project Overview
 
-Remotion Ads Generator is a powerful web application that empowers users to create dynamic, professional-quality video advertisements using customizable templates. Built with React and Remotion, this tool streamlines the process of creating engaging video ads for various platforms, making it accessible to both beginners and experienced marketers.
+Animator Studio is a powerful web application that empowers users to create dynamic, professional-quality video advertisements using customizable templates. Built with React and Remotion, this tool streamlines the process of creating engaging video ads for various platforms, making it accessible to both beginners and experienced marketers.
 
 ## Features
 

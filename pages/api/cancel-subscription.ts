@@ -2,9 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
 import { db } from '@/firebaseConfig'
 import { doc, runTransaction, collection, query, where, orderBy, limit, getDocs } from 'firebase/firestore'
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-12-18.acacia',
+  apiVersion: '2025-02-24.acacia',
 })
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

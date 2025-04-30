@@ -67,7 +67,7 @@ import React, { useMemo } from 'react'
 import { AbsoluteFill, interpolate, useVideoConfig } from 'remotion'
 
 interface QuickTeaserProps {
-  src: string;
+  media: string;
   isVideo: boolean;
   volume: number;
   title: string;
@@ -81,7 +81,7 @@ interface QuickTeaserProps {
 }
 
 export const QuickTeaser: React.FC<QuickTeaserProps> = ({
-  src,
+  media,
   isVideo,
   volume,
   title,
@@ -148,7 +148,7 @@ export const QuickTeaser: React.FC<QuickTeaserProps> = ({
         backgroundColor,
       }}>
         <MediaComponent
-          src={src}
+          src={media}
           style={{ width: "100%", height: "100%", minWidth: "1400px", objectFit: "cover", backgroundColor }}
           {...(isVideo ? { autoPlay: true, loop: true, muted: true, volume } : {})}
         />
