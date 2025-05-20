@@ -1,5 +1,13 @@
 # Animator Studio
 
+## 🎬 Demo Video
+
+
+
+https://github.com/user-attachments/assets/9107626d-ec87-4948-9303-48f8a54b4a73
+
+
+
 ## Project Overview
 
 Animator Studio is a powerful web application that empowers users to create dynamic, professional-quality video advertisements using customizable templates. Built with React and Remotion, this tool streamlines the process of creating engaging video ads for various platforms, making it accessible to both beginners and experienced marketers.
